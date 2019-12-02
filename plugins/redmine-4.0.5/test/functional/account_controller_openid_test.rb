@@ -44,7 +44,7 @@ class AccountControllerOpenidTest < Redmine::ControllerTest
       post :login, :params => {
           :openid_url => existing_user.identity_url
         }
-      assert_redirected_to '/my/page'
+      assert_redirected_to '/projects/show'
     end
 
     def test_login_with_invalid_openid_provider
