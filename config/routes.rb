@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   end
   resources :projects
   delete '/projects/:id' => 'projects#destroy'
+  post '/projects/:id' => 'projects#show'
+  post '/projects/:id/edit' => 'projects#edit'
+
+  
+
 
 
 
