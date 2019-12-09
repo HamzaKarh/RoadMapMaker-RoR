@@ -1,31 +1,38 @@
-h1 Listing projects
 - if user_signed_in?
-  = link_to "Sign out", destroy_user_session_path
+  |Logged in as 
+  strong = current_user.email
+  br
+  = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link'
+  br
+  = link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link'
+  br
   table
     thead
       tr
         th Name
-        th Client company name
-        th Client name
-        th Description
+        th Client Company Name    
+        th Client Name    
+        th Description    
         th
         th
         th
 
     tbody
-      - @project.where(user: current_user) do |project|
-        tr
-          td = project.name
-          td = project.client_company_name
-          td = project.client_name
-          td = project.description
-          td = link_to 'Show', project
-          td = link_to 'Edit', edit_project_path(project)
-          td = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete
-    - else
-      = link_to 'New Project', new_project_path
-      
+      - if current_user.project_id.nil?
+        br
+        = link_to 'New Project', new_project_path 
+      - else 
+        - @projects.find(user: current_user).each do |project|
+          tr
+            td = project.name
+            td = project.client_company_name
+            td = project.client_name
+            td = project.description
+            td = button_to 'Show', project
+            td = button_to 'Edit', edit_project_path(project)
+            td = button_to 'Destroy', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
+
+
 - else
-  = link_to 'login', new_user_session_path
-
-
+  | You are not logged in!
+  = link_to "Login", new_user_session_path 
