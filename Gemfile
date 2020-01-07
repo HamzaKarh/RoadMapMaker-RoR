@@ -7,7 +7,7 @@ ruby '2.6.3'
 gem 'coffee-rails'
 gem 'visualize_ruby'
 gem 'devise'
-gem "slim-rails"
+gem 'slim-rails'
 gem 'jquery-rails' 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'

@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @project = current_user.project
   end
   
 
@@ -59,13 +60,13 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
-    redirect_to projects_url
+    
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = current_user.project
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

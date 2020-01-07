@@ -1,15 +1,15 @@
 - if user_signed_in?
   = link_to "Sign out", destroy_user_session_path, methode: :delete
-  table
-    thead
-      tr
-        th Name
-        th Client company name
-        th Client name
-        th Description
-        th
-        th
-        th
+  table.display-table
+    thead.table-header
+      tr.table-header--row
+        th.header-case Name
+        th.header-case Client company name
+        th.header-case Client name
+        th.header-case Description
+        th.header-case
+        th.header-case
+        th.header-case
 
     tbody
         - @projects.each do |project|
@@ -24,6 +24,9 @@
 
         br
         = link_to 'New Problem', new_problem_path 
+        br
+        = link_to 'New Project', new_project_path 
+
 
 - else
   | You are not logged in!
