@@ -26,7 +26,7 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params)
 
-    respond_to do |format|
+    respond_to do |format|  
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
         format.json { render :show, status: :created, location: @problem }
@@ -69,6 +69,6 @@ class ProblemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problem_params
-      params.require(:problem).permit(:name, :description)
+      params.require(:problem).permit(:name, :description, :project)
     end
 end

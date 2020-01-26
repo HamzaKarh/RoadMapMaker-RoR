@@ -21,6 +21,8 @@
             td = button_to 'Show', project
             td = button_to 'Edit', edit_project_path(project)
             td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
+            td = button_to 'Add issue', new_problem_path(project)
+
 
         br
         = link_to 'New Problem', new_problem_path 
