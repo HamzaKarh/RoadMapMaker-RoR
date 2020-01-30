@@ -12,6 +12,11 @@ class ProblemsController < ApplicationController
   def show
   end
 
+
+#  def new_problem_form
+#		render 'adding_form', locals: {project_id: 'project_id'}		
+#	end
+
   # GET /problems/new
   def new
     @problem = Problem.new
@@ -25,7 +30,6 @@ class ProblemsController < ApplicationController
   # POST /problems.json
   def create
     @problem = Problem.new(problem_params)
-
     respond_to do |format|  
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
@@ -69,6 +73,6 @@ class ProblemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problem_params
-      params.require(:problem).permit(:name, :description, :project)
+      params.require(:problem).permit(:name, :description, :project_id)
     end
 end
