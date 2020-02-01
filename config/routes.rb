@@ -2,28 +2,22 @@ Rails.application.routes.draw do
   resources :actions
   devise_for :admins
   devise_for :user
-  devise_scope :user do 
-    resources :projects, only: [:index, :destroy, :edit, :update, :new]
-    resources :problems, only: [:index, :destroy, :edit, :update, :new]
+  devise_scope :user do
     get '/user/sign_out(.:format)' => 'devise/sessions#destroy'
   end
 
-  resources :projects
-  
-
+  resources :projects do
+    resources :problems, controller: 'projects/problems'
+    
+  end
   delete '/projects/:id' => 'projects#destroy'
   post '/projects/:id' => 'projects#show'
   post '/projects/:id/edit' => 'projects#edit'
-  patch '/projects' => 'projects#update'
+  patch '/projects' => 'projects#update'  
 
-  resources :problems
-
-
-  post '/problems/new' => 'problems#new'
-  patch '/problems' => 'problems#update'
 
   
-
+  root 'projects#index'
   
 
 

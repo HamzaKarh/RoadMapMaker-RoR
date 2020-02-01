@@ -1,0 +1,14 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @problem.name
+p
+  strong Description:
+  = @problem.description
+
+td = link_to 'Show project', [@project] 
+
+=> link_to 'Edit', edit_project_problem_path(@project, @problem)
+'|
+=< link_to 'Back', project_problems_path(@project)

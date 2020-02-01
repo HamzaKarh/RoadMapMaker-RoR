@@ -1,3 +1,4 @@
 class Problem < ApplicationRecord
-    belongs_to :Project
+    belongs_to :project
+    validates :name, presence: true 
 end

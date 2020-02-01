@@ -1,4 +1,4 @@
-= form_for @problem, url: { controller: 'problems', action: 'create' } do |f|
+= form_with(model: [@project, @problem]) do |f|
   - if @problem.errors.any?
     #error_explanation
       h2 = "#{pluralize(@problem.errors.count, "error")} prohibited this problem from being saved:"
@@ -13,8 +13,6 @@
     = f.label :description
     = f.text_field :description
 
-  .field
-    = f.label :project
-    = f.collection_select :project_id, Project.order(:name), :id, :name, include_blank: false
+
   .actions = f.submit
 
