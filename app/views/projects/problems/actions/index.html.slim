@@ -1,0 +1,24 @@
+h1 Listing actions
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @actions.each do |action|
+      tr
+        td = action.name
+        td = action.description
+        td = button_to 'Show problem', [@problem] 
+        td = button_to 'Edit', edit_project_problem_action_path(@project, @problem,  action)
+        td = button_to 'Delete', [@project,@problem,action] , data: { confirm: 'Are you sure?' }, method: :delete
+
+
+br
+
+= button_to 'New Problem', new_project_problem_action_path(@project,@problem)

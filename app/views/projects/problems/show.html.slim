@@ -6,9 +6,27 @@ p
 p
   strong Description:
   = @problem.description
+p
+  strong Actions: 
+  br
+  - @problem.actions.each do |action|
+    p
+      Strong Name 
+      = action.name
+    p
+      Strong Description
+      = action.description
+      br
+    
+    p
+      td = button_to 'Edit', edit_problem_action_path(@problem,  action), :method => :get
+      td = button_to 'Delete', [@problem,action] , data: { confirm: 'Are you sure?' }, method: :delete
 
-td = link_to 'Show project', [@project] 
 
-=> link_to 'Edit', edit_project_problem_path(@project, @problem)
-'|
-=< link_to 'Back', project_problems_path(@project)
+
+td = button_to 'Add action', new_project_problem_action_path(@project, @problem), :method => :get
+td = button_to 'Show project', [@project] 
+
+=> button_to 'Edit', edit_project_problem_path(@project, @problem), :method => :get
+
+=< button_to 'Back', project_problems_path(@project)

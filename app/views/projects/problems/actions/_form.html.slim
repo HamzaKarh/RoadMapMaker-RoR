@@ -1,0 +1,20 @@
+= form_with(model: [@action.problem.project, @action.problem, @action])do |f|
+  - if @action.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@action.errors.count, "error")} prohibited this action from being saved:"
+      ul
+        - @action.errors.full_messages.each do |message|
+          li = message
+
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :description
+    = f.text_area :description
+
+
+  .actions = f.submit
+

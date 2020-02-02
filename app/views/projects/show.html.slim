@@ -30,6 +30,6 @@ p
       td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
 
 
-=> link_to 'Edit', edit_project_path(@project)
+=> button_to 'Edit', edit_project_path(@project)
 '|
-=< link_to 'Back', projects_path
+=< button_to 'Back', projects_path

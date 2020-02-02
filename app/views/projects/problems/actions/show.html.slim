@@ -1,0 +1,14 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @action.name
+p
+  strong Description:
+  = @action.description
+
+td = button_to 'Show problem', [@problem] 
+
+=> button_to 'Edit', edit_project_problem_action_path(@project,@problem, @action)
+'|
+=< button_to 'Back', project_problem_actions_path(@project,@problem)

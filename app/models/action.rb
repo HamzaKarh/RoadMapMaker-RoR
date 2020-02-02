@@ -1,3 +1,4 @@
 class Action < ApplicationRecord
-    has_many :problems
+    belongs_to :problem
+
 end

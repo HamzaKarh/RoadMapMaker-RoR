@@ -14,11 +14,11 @@ table
       tr
         td = problem.name
         td = problem.description
-        td = link_to 'Show project', [@project] 
-        td = link_to 'Edit', edit_project_problem_path(@project,  problem)
-        td = link_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+        td = button_to 'Show project', [@project] 
+        td = button_to 'Edit', edit_project_problem_path(@project,  problem)
+        td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
 
 
 br
 
-= link_to 'New Problem', new_project_problem_path(@project)
+= button_to 'New Problem', new_project_problem_path(@project)

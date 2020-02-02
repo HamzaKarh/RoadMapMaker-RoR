@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :actions
   devise_for :admins
   devise_for :user
   devise_scope :user do
@@ -7,14 +6,11 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
-    resources :problems, controller: 'projects/problems'
+    resources :problems, controller: 'projects/problems' do
+      resources :actions, controller: 'projects/problems/actions' 
+    end
     
   end
-  delete '/projects/:id' => 'projects#destroy'
-  post '/projects/:id' => 'projects#show'
-  post '/projects/:id/edit' => 'projects#edit'
-  patch '/projects' => 'projects#update'  
-
 
   
   root 'projects#index'

@@ -14,9 +14,6 @@ class Projects::ProblemsController < ApplicationController
   end
 
 
-#  def new_problem_form
-#		render 'adding_form', locals: {project_id: 'project_id'}		
-#	end
 
   # GET /problems/new
   def new

@@ -1,5 +1,5 @@
 - if user_signed_in?
-  = link_to "Sign out", destroy_user_session_path, methode: :delete
+  = button_to "Sign out", destroy_user_session_path, methode: :delete
   table.display-table
     thead.table-header
       tr.table-header--row
@@ -30,4 +30,4 @@
 
 - else
   | You are not logged in!
-  = link_to "Login", new_user_session_path 
+  = button_to "Login", new_user_session_path 
