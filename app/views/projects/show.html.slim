@@ -1,35 +1,35 @@
 p#notice = notice
 
 p
-  strong Name:
+  strong Nom: 
   = @project.name
 p
-  strong Client company name:
+  strong Nom de compagnie du Client: 
   = @project.client_company_name
 p
-  strong Client name:
+  strong Nom Client: 
   = @project.client_name
 p
-  strong Description:
+  strong Description: 
   = @project.description
 
 p 
-  strong Problems: 
+  strong Problèmes: 
   br
   - @project.problems.each do |problem|
     p
-      Strong Name 
+      Strong Nom: 
       = problem.name
     p
-      Strong Description
+      Strong Description: 
       = problem.description
       br
     
     p
-      td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
-      td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+      td = button_to 'Modifier', edit_project_problem_path(@project,  problem), :method => :get
+      td = button_to 'Supprimer', [@project,problem] , data: { confirm: 'Êtes-vous sûr?' }, method: :delete
 
 
-=> button_to 'Edit', edit_project_path(@project)
+=> button_to 'Modifier', edit_project_path(@project), :method => :get
 '|
-=< button_to 'Back', projects_path
+=< button_to 'Retour', projects_path

@@ -1,11 +1,11 @@
 - if user_signed_in?
-  = button_to "Sign out", destroy_user_session_path, methode: :delete
+  = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
   table.display-table
     thead.table-header
       tr.table-header--row
-        th.header-case Name
-        th.header-case Client company name
-        th.header-case Client name
+        th.header-case Nom
+        th.header-case Nom Entreprise Cliente
+        th.header-case Nom Client
         th.header-case Description
         th.header-case
         th.header-case
@@ -18,16 +18,16 @@
             td = project.client_company_name
             td = project.client_name
             td = project.description
-            td = button_to 'Show', project
-            td = button_to 'Edit', edit_project_path(project) 
-            td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
-            td = button_to 'Add issue', new_project_problem_path(project.id), :method => :get
+            td = button_to 'Afficher', project, :method => :get 
+            td = button_to 'Modifier', edit_project_path(project), :method => :get
+            td = button_to 'Supprimer', project, :method => :delete, :onclick => "return confirm('Êtes-vous sûr de vouloir supprimer ce projet?')" 
+            td = button_to 'Ajouter un problème', new_project_problem_path(project.id), :method => :get
 
         br
-        = link_to 'New Project', new_project_path 
+        = link_to 'Nouveau projet', new_project_path 
 
   #problem_from_anchor
 
 - else
-  | You are not logged in!
-  = button_to "Login", new_user_session_path 
+  | Vous n'êtes pas connecté !
+  = button_to "Se Connecter", new_user_session_path 
