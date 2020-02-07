@@ -1,0 +1,2 @@
+module CounteractionsHelper
+end

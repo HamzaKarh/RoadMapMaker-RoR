@@ -7,24 +7,24 @@ p
   strong Description:
   = @problem.description
 p
-  strong Actions: 
+  strong Counteractions: 
   br
-  - @problem.actions.each do |action|
+  - @problem.counteractions.each do |counteraction|
     p
       Strong Name 
-      = action.name
+      = counteraction.name
     p
       Strong Description
-      = action.description
+      = counteraction.description
       br
     
     p
-      td = button_to 'Edit', edit_problem_action_path(@problem,  action), :method => :get
-      td = button_to 'Delete', [@problem,action] , data: { confirm: 'Are you sure?' }, method: :delete
+      td = button_to 'Edit', edit_problem_counteraction_path(@problem,  counteraction), :method => :get
+      td = button_to 'Delete', [@problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
 
 
 
-td = button_to 'Add action', new_project_problem_action_path(@project, @problem), :method => :get
+td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, @problem), :method => :get
 td = button_to 'Show project', [@project] 
 
 => button_to 'Edit', edit_project_problem_path(@project, @problem), :method => :get
