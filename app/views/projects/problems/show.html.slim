@@ -19,8 +19,8 @@ p
       br
     
     p
-      td = button_to 'Edit', edit_problem_counteraction_path(@problem,  counteraction), :method => :get
-      td = button_to 'Delete', [@problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
+      td = button_to 'Edit', edit_project_problem_counteraction_path(@problem,  counteraction), :method => :get
+      td = button_to 'Delete', [@project, @problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
 
 
 
