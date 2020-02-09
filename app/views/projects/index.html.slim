@@ -1,15 +1,15 @@
 - if user_signed_in?
-  = link_to "Sign out", destroy_user_session_path, methode: :delete
-  table
-    thead
-      tr
-        th Name
-        th Client company name
-        th Client name
-        th Description
-        th
-        th
-        th
+  = button_to "Sign out", destroy_user_session_path, :method => :delete
+  table.display-table
+    thead.table-header
+      tr.table-header--row
+        th.header-case Name
+        th.header-case Client company name
+        th.header-case Client name
+        th.header-case Description
+        th.header-case
+        th.header-case
+        th.header-case
 
     tbody
         - @projects.each do |project|
@@ -18,13 +18,16 @@
             td = project.client_company_name
             td = project.client_name
             td = project.description
-            td = button_to 'Show', project
-            td = button_to 'Edit', edit_project_path(project)
-            td = button_to 'Destroy', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
+            td = button_to 'Show', project, :method => :get
+            td = button_to 'Edit', edit_project_path(project), :method => :get
+            td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
+            td = button_to 'Add issue', new_project_problem_path(project.id), :method => :get
 
         br
-        = link_to 'New Problem', new_problem_path 
+        = link_to 'New Project', new_project_path 
+
+
 
 - else
   | You are not logged in!
-  = link_to "Login", new_user_session_path 
+  = button_to "Login", new_user_session_path 

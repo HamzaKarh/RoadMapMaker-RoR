@@ -1,3 +1,5 @@
 class Problem < ApplicationRecord
-    belongs_to :Project
+    belongs_to :project
+    has_many :counteractions, dependent: :destroy
+    validates :name, presence: true 
 end

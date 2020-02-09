@@ -1,0 +1,32 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @problem.name
+p
+  strong Description:
+  = @problem.description
+p
+  strong Counteractions: 
+  br
+  - @problem.counteractions.each do |counteraction|
+    p
+      Strong Name 
+      = counteraction.name
+    p
+      Strong Description
+      = counteraction.description
+      br
+    
+    p
+      td = button_to 'Edit', edit_project_problem_counteraction_path(@problem,  counteraction), :method => :get
+      td = button_to 'Delete', [@project, @problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
+
+
+
+td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, @problem), :method => :get
+td = button_to 'Show project', [@project] 
+
+=> button_to 'Edit', edit_project_problem_path(@project, @problem), :method => :get
+
+=< button_to 'Back', project_problems_path(@project)

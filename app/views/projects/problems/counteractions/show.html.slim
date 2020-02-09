@@ -1,0 +1,14 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @counteraction.name
+p
+  strong Description:
+  = @counteraction.description
+
+td = button_to 'Show problem', [@problem] 
+
+=> button_to 'Edit', edit_project_problem_counteraction_path(@project,@problem, @counteraction)
+'|
+=< button_to 'Back', project_problem_counteractions_path(@project,@problem)

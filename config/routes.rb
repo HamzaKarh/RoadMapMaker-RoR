@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  resources :actions
-  resources :problems
   devise_for :admins
   devise_for :user
-  devise_scope :user do 
+  devise_scope :user do
     get '/user/sign_out(.:format)' => 'devise/sessions#destroy'
   end
-  resources :projects
-  delete '/projects/:id' => 'projects#destroy'
-  post '/projects/:id' => 'projects#show'
-  post '/projects/:id/edit' => 'projects#edit'
 
+  resources :projects do
+    resources :problems, controller: 'projects/problems' do
+      resources :counteractions, controller: 'projects/problems/counteractions' 
+    end
+  end
+
+
+  root 'projects#index'
   
 
 
