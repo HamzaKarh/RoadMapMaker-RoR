@@ -66,15 +66,17 @@ class Projects::Problems::CounteractionsController < ApplicationController
     end
   end
 
-  private
-    def get_problem
-      @problem = Problem.find(params[:problem_id])
-    end
 
-    def get_project
-      @project = Project.find(params[:project_id])
-    end
-    
+
+  def get_problem
+    @problem = Problem.find(params[:problem_id])
+  end
+  
+  def get_project
+    @project = Project.find(params[:project_id])
+  end
+  
+  private
     # Use callbacks to share common setup or constraints between counteractions.
     def set_counteraction
       @counteraction = @problem.counteractions.find(params[:id])

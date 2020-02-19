@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     abstract_type (0.0.7)
     actioncable (6.0.0)
@@ -170,6 +171,7 @@ GEM
       bundler (>= 1.3.0)
       railties (= 6.0.0)
       sprockets-rails (>= 2.0.0)
+    rails-assets-interact (1.5.4)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -287,6 +289,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.0)
+  rails-assets-interact!
   rails-erd
   sass-rails (~> 5)
   selenium-webdriver
