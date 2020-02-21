@@ -1,0 +1,15 @@
+.ForgotPasswordBox
+  p Vous avez oublié votre mot de passe?
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .fieldForgotPassword
+      
+      br/
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-mail"
+    br
+    br
+    .actionsForgotPassword
+      = f.submit "Validation"
+  br
+  .LinkForgotPassword
+    = link_to "Retour à la page précédente", new_user_session_path
