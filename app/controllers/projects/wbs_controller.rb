@@ -6,7 +6,7 @@ class Projects::WbsController < ApplicationController
   # GET /wbs
   # GET /wbs.json
   def index
-    @wbs = @project.wb
+    @wbs = @project.wbs
   end
 
   # GET /wbs/1
@@ -56,6 +56,7 @@ class Projects::WbsController < ApplicationController
   def draw
   end
 
+  
   # DELETE /wbs/1
   # DELETE /wbs/1.json
   def destroy

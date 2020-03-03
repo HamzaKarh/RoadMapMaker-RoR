@@ -1,8 +1,7 @@
 class Projects::Problems::CounteractionsController < ApplicationController
-  before_action :get_problem
-  before_action :get_project
-  before_action :set_counteraction, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_problem, except: [:show]
+  before_action :get_project, except: [:show]
+  before_action :set_counteraction, only: [:edit, :update, :destroy]
 
   # GET /counteractions
   # GET /counteractions.json
@@ -13,6 +12,10 @@ class Projects::Problems::CounteractionsController < ApplicationController
   # GET /counteractions/1
   # GET /counteractions/1.json
   def show
+    @counteraction = Counteraction.find(params[:id])
+    @problem = @counteraction.problem
+    @project = @problem.project
+    
   end
 
 
@@ -68,19 +71,21 @@ class Projects::Problems::CounteractionsController < ApplicationController
 
 
 
-  def get_problem
-    @problem = Problem.find(params[:problem_id])
-  end
-  
-  def get_project
-    @project = Project.find(params[:project_id])
-  end
-  
+ 
   private
     # Use callbacks to share common setup or constraints between counteractions.
     def set_counteraction
       @counteraction = @problem.counteractions.find(params[:id])
     end
+    
+    def get_problem
+      @problem = Problem.find(params[:problem_id])
+    end
+    
+    def get_project
+      @project = Project.find(params[:project_id])
+    end
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def counteraction_params

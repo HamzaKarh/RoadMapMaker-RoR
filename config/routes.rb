@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       get '/draw' => 'projects/wbs#draw'
     end
   end
-  resources :counteractions, controller: 'projects/problems/counteractions', only: [:show]
+  resources :counteractions, controller: 'projects/problems/counteractions' do
+    get "counteractions/:id" => "projects/problems/counteractions#show"
+  end
 
 
 

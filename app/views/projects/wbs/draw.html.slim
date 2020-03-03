@@ -1,12 +1,12 @@
 .actionGenerator
     #actionSelector= select_tag "Action",
-     options_from_collection_for_select(@counteractions, 'id', 'name', params[:id]),{id: 'select_tag'}
+     options_from_collection_for_select(@counteractions, 'name', 'name', params[:id]),{id: 'select_tag'}
     button#generate_button Generate 
 
 
 
 .actionGeneration_Box
-    #actionSpawn
+    #spawn_anchor
 
 
 
