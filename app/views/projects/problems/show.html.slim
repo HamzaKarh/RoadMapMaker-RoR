@@ -12,9 +12,12 @@ p
     
     p
       td = button_to 'Edit', edit_project_problem_counteraction_path(@problem,  counteraction), :method => :get
-      td = button_to 'Delete', [@project, @problem,counteraction] , data: { confirm: 'Are you sure?' }, method: => :delete
-      td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, @problem), :method => :get
-      td = button_to 'Show project', [@project] 
+      td = button_to 'Delete', [@project, @problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
+
+
+
+td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, @problem), :method => :get
+td = button_to 'Show project', [@project] 
 
 => button_to 'Modifier', edit_project_problem_path(@project, @problem), :method => :get
 

@@ -1,31 +1,33 @@
 - if user_signed_in?
-  .LeBoutontable
-    = button_to "Se déconnecter", destroy_user_session_path, :method => :delete
-  br
-    
-    .Latable
-      table.display-table
-        thead.table-header
-          tr.table-header--row
-            th.header-case Nom du projet
-            th.header-case Nom de l'entreprise
-            th.header-case Nom du client
-            th.header-case Description
-            th.header-case  = link_to 'Nouveau Projet', new_project_path 
+
+  = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
+  table.display-table
+    thead.table-header
+      tr.table-header--row
+        th.header-case Nom
+        th.header-case Nom Entreprise Cliente
+        th.header-case Nom Client
+        th.header-case Description
+        th.header-case
+        th.header-case
+        th.header-case
+
+    tbody
+        - @projects.each do |project|
+          tr
+            td = project.name
+            td = project.client_company_name
+            td = project.client_name
+            td = project.description
+            td = button_to 'Show', project, :method => :get
+            td = button_to 'Edit', edit_project_path(project), :method => :get
+            td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
+            td = button_to 'Add issue', new_project_problem_path(project.id), :method => :get
+
+        br
+        = link_to 'Nouveau projet', new_project_path 
 
 
-        tbody
-            - @projects.each do |project|
-              tr
-                td = project.name
-                td = project.client_company_name
-                td = project.client_name
-                td = project.description
-                td = button_to 'Show', project, :method => :get
-                td = button_to 'Show', project, :method => :get
-                td = button_to 'Edit', edit_project_path(project), :method => :get
-                td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
-                td = button_to 'Add issue', new_project_problem_path(project.id), :method => :get
 
 - else
 

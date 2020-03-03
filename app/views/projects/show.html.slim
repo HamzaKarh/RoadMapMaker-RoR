@@ -20,15 +20,16 @@
   
 
 p 
+  br
   strong Problems: 
   
   br
   - @project.problems.each do |problem|
     p
-      Strong Nom: 
+      Strong Name: 
       = problem.name
     p
-      Strong Description: 
+      Strong Description:
       = problem.description
       br
     
@@ -38,7 +39,9 @@ p
       td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
       td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
 
-
 => button_to 'Edit', edit_project_path(@project), :method => :get
 
+=> button_to 'Edit', edit_project_path(@project)
+
 =< button_to 'Back', projects_path
+
