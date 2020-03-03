@@ -1,9 +1,9 @@
-h1 Listing problems
+h1 Liste des problèmes
 
 table
   thead
     tr
-      th Name
+      th Nom
       th Description
       th
       th
@@ -14,11 +14,11 @@ table
       tr
         td = problem.name
         td = problem.description
-        td = button_to 'Show project', [@project] 
-        td = button_to 'Edit', edit_project_problem_path(@project,  problem)
-        td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+        td = button_to 'Afficher projet', [@project] 
+        td = button_to 'Modifier', edit_project_problem_path(@project,  problem)
+        td = button_to 'Supprimer', [@project,problem] , data: { confirm: 'Êtes-vous sûr?' }, method: :delete
 
 
 br
 
-= button_to 'New Problem', new_project_problem_path(@project)
+= button_to 'Nouveau Problème', new_project_problem_path(@project)

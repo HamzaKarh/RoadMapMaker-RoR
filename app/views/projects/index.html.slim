@@ -1,4 +1,5 @@
 - if user_signed_in?
+<<<<<<< HEAD
   .LeBoutontable
     = button_to "Se déconnecter", destroy_user_session_path, :method => :delete
   br
@@ -30,9 +31,44 @@
 
 
     #problem_from_anchor
+=======
+  = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
+  table.display-table
+    thead.table-header
+      tr.table-header--row
+        th.header-case Nom
+        th.header-case Nom Entreprise Cliente
+        th.header-case Nom Client
+        th.header-case Description
+        th.header-case
+        th.header-case
+        th.header-case
+
+    tbody
+        - @projects.each do |project|
+          tr
+            td = project.name
+            td = project.client_company_name
+            td = project.client_name
+            td = project.description
+            td = button_to 'Afficher', project, :method => :get 
+            td = button_to 'Modifier', edit_project_path(project), :method => :get
+            td = button_to 'Supprimer', project, :method => :delete, :onclick => "return confirm('Êtes-vous sûr de vouloir supprimer ce projet?')" 
+            td = button_to 'Ajouter un problème', new_project_problem_path(project.id), :method => :get
+
+        br
+        = link_to 'Nouveau projet', new_project_path 
+
+  #problem_from_anchor
+>>>>>>> 8b62f6916ff34ac1701d271777a240c70a12f12e
 
 - else
+<<<<<<< HEAD
+  | Vous n'êtes pas connecté !
+  = button_to "Se Connecter", new_user_session_path 
+=======
 
   meta content=("0; url= /user/sign_in") http-equiv="Refresh" /
 
 
+>>>>>>> a355f818a1e0cac5107f6458b40301720c387675

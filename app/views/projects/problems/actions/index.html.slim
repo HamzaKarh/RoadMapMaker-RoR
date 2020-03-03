@@ -1,9 +1,9 @@
-h1 Listing actions
+h1 Liste Actions
 
 table
   thead
     tr
-      th Name
+      th Nom
       th Description
       th
       th
@@ -14,11 +14,11 @@ table
       tr
         td = action.name
         td = action.description
-        td = button_to 'Show problem', [@problem] 
-        td = button_to 'Edit', edit_project_problem_action_path(@project, @problem,  action)
-        td = button_to 'Delete', [@project,@problem,action] , data: { confirm: 'Are you sure?' }, method: :delete
+        td = button_to 'Afficher les problèmes associés', [@problem] 
+        td = button_to 'Modifier', edit_project_problem_action_path(@project, @problem,  action)
+        td = button_to 'Supprimer', [@project,@problem,action] , data: { confirm: 'Êtes-vous sûr?' }, method: :delete
 
 
 br
 
-= button_to 'New Problem', new_project_problem_action_path(@project,@problem)
+= button_to 'Nouveau problème', new_project_problem_action_path(@project,@problem)

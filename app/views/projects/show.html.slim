@@ -25,16 +25,16 @@ p
   br
   - @project.problems.each do |problem|
     p
-      Strong Name 
+      Strong Nom: 
       = problem.name
     p
-      Strong Description
+      Strong Description: 
       = problem.description
       br
     
     p
-      td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
-      td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+      td = button_to 'Modifier', edit_project_problem_path(@project,  problem), :method => :get
+      td = button_to 'Supprimer', [@project,problem] , data: { confirm: 'Êtes-vous sûr?' }, method: :delete
 
 => button_to 'Edit', edit_project_path(@project), :method => :get
 
