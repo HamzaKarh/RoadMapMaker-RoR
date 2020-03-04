@@ -1,0 +1,110 @@
+.RegistrationBox
+
+    //background
+    background: #ffffff
+
+    //position
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    //font
+    color: #212529
+    font-family: 'Poppins'
+    overflow: false
+    font-size: 1rem
+
+    //taille
+    padding-top: 2.5%
+    padding-bottom: 2.5%
+    padding-right: 5%
+    padding-left: 5%
+
+    //Shape
+    border-radius: 10px
+    width: 40%
+    
+    font-weight: 400
+    line-height: 1.5
+
+.fieldRegistration
+    border-bottom-style: groove
+    border-color: #ffffff
+    border-bottom: 1px solid #999
+    
+.fieldRegistration #user_email
+    font-family: inherit
+    font-size: inherit
+    margin-bottom: 5px
+    background-color: #ffffff
+    font-size: 1.25rem
+    border-style: hidden
+    width: 100%
+
+.fieldRegistration #user_email:focus::placeholder
+    color: #525252
+
+.fieldRegistration #user_password
+    font-family: inherit
+    font-size: inherit
+    margin-bottom: 5px
+    background-color: #ffffff
+    font-size: 1.25rem
+    border-style: hidden
+    width: 100%
+
+.fieldRegistration #user_password:focus::placeholder
+    color: #525252
+
+.fieldRegistration #user_password_confirmation
+    font-family: inherit
+    font-size: inherit
+    margin-bottom: 5px
+    background-color: #ffffff
+    font-size: 1.25rem
+    border-style: hidden
+    width: 100%
+
+.fieldRegistration #user_password_confirmation:focus::placeholder
+    color: #525252
+
+.RegistrationBox .LinkRegistration
+    
+    color: #666666
+    text-align: center
+    
+    a
+        color: #666666
+        text-decoration: none
+        moz-transition: all .4s
+    a:hover
+        color: #0a0808
+
+.RegistrationBox p
+    display: block
+    font-size: 30px
+    color: #333333
+    line-height: 1.2
+    text-align: center
+    font-family: Poppins
+
+.RegistrationBox .ActionsRegistration
+        
+    display: flex
+    align-items: center
+    justify-content: center
+
+    input[type="submit"]
+        border-radius: 25px
+        border-style: hidden
+        font-size: 1rem
+        padding-top: 10px
+        padding-bottom: 10px
+        padding-right: 50px
+        padding-left: 50px
+        background-color: rgba(38, 112, 251, 0.904)
+        -webkit-box-shadow: 0 10px 30px 0px rgba(38, 112, 251, 0.657)
+        color: white
+    input[type="submit"]:hover
+        background-color: rgb(38, 112, 251)

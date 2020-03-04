@@ -1,0 +1,29 @@
+
+.LogBox
+  .box1
+    p Bienvenue sur CidProject
+    p Feuille de route
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+    br
+    .fieldLog
+      = f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "Email"
+    br
+    .fieldLog
+      = f.password_field :password, autocomplete: "current-password" , placeholder: "Mot de passe"
+      - if devise_mapping.rememberable? 
+  
+    br
+    .checkboxu
+      = f.check_box :remember_me 
+      = f.label :remember_me 
+    br
+    .actions
+      = f.submit "S'identifier" 
+  br
+  .Leslinks
+    span Vous n'avez pas de compte? 
+    
+    = link_to "S'inscrire", new_user_registration_path
+    br
+    = link_to "Mot de passe oublié", new_user_password_path
