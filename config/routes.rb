@@ -7,12 +7,11 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :problems, controller: 'projects/problems' do
-      resources :actions, controller: 'projects/problems/actions' 
+      resources :counteractions, controller: 'projects/problems/counteractions' 
     end
-    
   end
 
-  
+
   root 'projects#index'
   
 
