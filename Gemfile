@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-
+gem 'bootstrap'
+gem 'rails-assets-interact', source: 'https://rails-assets.org'#Interact.js for the drawing part
 gem 'coffee-rails'
 gem 'visualize_ruby'
 gem 'devise'
