@@ -1,20 +1,28 @@
-p#notice = notice
+/*p#notice = notice
 
-p
-  strong Name:
-  = @project.name
-p
-  strong Client company name:
-  = @project.client_company_name
-p
-  strong Client name:
-  = @project.client_name
-p
-  strong Description:
-  = @project.description
+.TableProjet
+  table.display-table
+    thead.table-header
+      tr.table-header--row
+        th Nom du Projet
+        th = @project.name
+
+    tbody
+      tr
+        td Nom de la companie 
+        td = @project.client_company_name
+      tr
+        td Nom du Client
+        td = @project.client_name
+      tr
+        td Description
+        td = @project.description
+  
+
 p 
   br
   strong Problems: 
+  
   br
   - @project.problems.each do |problem|
     p
@@ -31,7 +39,9 @@ p
       td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
       td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
 
+=> button_to 'Edit', edit_project_path(@project), :method => :get
 
 => button_to 'Edit', edit_project_path(@project)
 
 =< button_to 'Back', projects_path
+

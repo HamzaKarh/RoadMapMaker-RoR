@@ -1,0 +1,32 @@
+
+.RegistrationBox
+
+  p Inscription
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .fieldRegistration
+
+      br/
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
+    
+    
+    .fieldRegistration
+      br/
+      = f.password_field :password, autocomplete: "new-password", placeholder: "Nouveau Mot de Passe"
+    
+    - if @minimum_password_length
+      em
+      | (#{@minimum_password_length} characters minimum)
+    
+    .fieldRegistration
+      br/
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirmation Mot de Passe"
+    br
+    br
+    .ActionsRegistration
+      = f.submit "S'inscrire"
+  br
+  .LinkRegistration
+    = link_to "Retour à la page précédente", new_user_session_path
+

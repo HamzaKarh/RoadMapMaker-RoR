@@ -1,11 +1,12 @@
 - if user_signed_in?
-  = button_to "Sign out", destroy_user_session_path, :method => :delete
+
+  = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
   table.display-table
     thead.table-header
       tr.table-header--row
-        th.header-case Name
-        th.header-case Client company name
-        th.header-case Client name
+        th.header-case Nom
+        th.header-case Nom Entreprise Cliente
+        th.header-case Nom Client
         th.header-case Description
         th.header-case
         th.header-case
@@ -29,10 +30,12 @@
             
 
         br
-        = link_to 'New Project', new_project_path 
+        = link_to 'Nouveau projet', new_project_path 
 
 
 
 - else
-  | You are not logged in!
-  = button_to "Login", new_user_session_path 
+
+  meta content=("0; url= /user/sign_in") http-equiv="Refresh" /
+
+
