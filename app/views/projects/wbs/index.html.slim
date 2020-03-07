@@ -1,0 +1,24 @@
+h1 Listing wbs
+
+table
+  thead
+    tr
+      th Name
+      th Project
+      th
+      th
+      th
+
+  tbody
+    - @wbs.each do |wb|
+      tr
+        td = wb.name
+        td = wb.project.name
+        td = link_to 'Show', project_wb_path(@project, wb)
+        td = link_to 'Edit', edit_project_wb_path(@project, wb)
+        td = link_to 'Destroy', [@project,wb], data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Draw', project_wb_draw_path(@project, wb)
+
+br
+
+= link_to 'New Wb', new_project_wb_path(@project)

@@ -1,0 +1,34 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @wb.name
+  br 
+  br
+  br
+p
+  strong Project:
+  br
+  strong Name:
+  
+  = @project.name
+  br
+  strong Client name:
+  
+  = @project.client_name
+  br
+  strong Client company name:
+  
+  = @project.client_company_name
+  br
+  strong Description:
+  
+  = @project.description
+  br 
+
+=> button_to 'Draw', project_wb_draw_path(@project,@wb), :method => :get
+
+
+=> button_to 'Edit', edit_project_wb_path(@project, @wb)
+
+=< button_to 'Back', project_wbs_path(@project)
