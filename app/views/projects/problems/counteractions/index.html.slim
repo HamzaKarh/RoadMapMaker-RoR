@@ -1,0 +1,25 @@
+h1 Listing counteraction
+
+table
+  thead
+    tr
+      th Name
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @counteractions.each do |counteraction|
+      tr
+        td = counteraction.name
+        td = counteraction.description
+        td = button_to 'show counteraction', counteraction_path(counteraction), :method => :get
+        td = button_to 'Show problem', [@project, @problem], :method => :get
+        td = button_to 'Edit', edit_project_problem_counteraction_path(@project, @problem,  counteraction)
+        td = button_to 'Delete', [@project,@problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
+
+
+br
+
+= button_to 'New Problem', new_project_problem_counteraction_path(@project,@problem)

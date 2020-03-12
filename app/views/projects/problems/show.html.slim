@@ -1,32 +1,25 @@
-p#notice = notice
-
-p
-  strong Name: 
-  = @problem.name
-p
-  strong Description: 
-  = @problem.description
 p
   strong Actions:  
   br
-  - @problem.actions.each do |action|
+  - @problem.counteractions.each do |counteraction|
     p
-      Strong Nom: 
-      = action.name
+      Strong Name 
+      = counteraction.name
     p
-      Strong Description: 
-      = action.description
+      Strong Description
+      = counteraction.description
       br
     
     p
-      td = button_to 'Modifier', edit_problem_action_path(@problem,  action), :method => :get
-      td = button_to 'Supprimer', [@problem,action] , data: { confirm: 'Êtes-vous sûr?' }, method: :delete
+      td = button_to 'Edit', edit_project_problem_counteraction_path(@problem,  counteraction), :method => :get
+      td = button_to 'Delete', [@project, @problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
 
 
 
-td = button_to 'Ajouter une action', new_project_problem_action_path(@project, @problem), :method => :get
-td = button_to 'Afficher projet', [@project] 
+td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, @problem), :method => :get
+td = button_to 'Show project', [@project] 
 
 => button_to 'Modifier', edit_project_problem_path(@project, @problem), :method => :get
 
 =< button_to 'Retour', project_problems_path(@project)
+

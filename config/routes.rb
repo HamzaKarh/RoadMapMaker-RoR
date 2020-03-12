@@ -7,12 +7,18 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :problems, controller: 'projects/problems' do
-      resources :actions, controller: 'projects/problems/actions' 
+      resources :counteractions, controller: 'projects/problems/counteractions' 
     end
-    
+    resources :wbs, controller: 'projects/wbs' do
+      get '/draw' => 'projects/wbs#draw'
+    end
+  end
+  resources :counteractions, controller: 'projects/problems/counteractions' do
+    get "counteractions/:id" => "projects/problems/counteractions#show"
   end
 
-  
+
+
   root 'projects#index'
   
 

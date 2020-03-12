@@ -7,15 +7,16 @@
           li = message
 
   .field
-    = f.label :Nom 
-    = f.text_field :name
+    
+    = f.text_field :name, placeholder: "Nom du projet"
+  br
   .field
-    = f.label :Nom_Entreprise_Cliente 
-    = f.text_field :client_company_name
+    = f.text_field :client_company_name, placeholder: "Nom de l'entreprise"
+  br
   .field
-    = f.label :Nom_Client 
-    = f.text_field :client_name
+    = f.text_field :client_name, placeholder: "Nom du Client"
+  br
   .field
-    = f.label :Description 
-    = f.text_area :description
+    = f.text_area :description, placeholder: "Description"
+  br
   .actions = f.submit
