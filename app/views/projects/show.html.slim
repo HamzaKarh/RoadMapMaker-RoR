@@ -17,27 +17,54 @@
       tr
         td Description
         td = @project.description
-  
+
+td = button_to 'Show WBS list', project_wbs_path(@project), :method => :get
+
 
 p 
-  br
-  strong Problems: 
-  
-  br
-  - @project.problems.each do |problem|
-    p
-      Strong Name: 
-      = problem.name
-    p
-      Strong Description:
-      = problem.description
-      br
-    
-    p
-      td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
-      td = button_to 'Show problem', [@project, problem], :method => :get
-      td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
-      td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
+
+  .problem-title
+    strong Problems: 
+
+
+  .problem-box
+    - @project.problems.each do |problem|
+      .problem-container
+        p
+          Strong Problem Name: 
+          = problem.name
+        p
+          Strong Description:
+          = problem.description
+        .action-box
+          
+          i
+            Strong Action list
+        - problem.counteractions.each do |counteraction|
+          .action-container
+            p
+              Strong Action Name: 
+              = counteraction.name
+            /p
+              Strong Description:
+              = counteraction.description
+            td = button_to 'Edit', edit_project_problem_counteraction_path(@project,  problem, counteraction), :method => :get
+            td = button_to 'Show action', [@project, problem, counteraction], :method => :get
+            td = button_to 'Delete', [@project,problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
+        
+        p
+          td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
+          td = button_to 'Show problem', [@project, problem], :method => :get
+          td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+          td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
+
+
+
+
+
+
+
+
 
 => button_to 'Edit', edit_project_path(@project), :method => :get
 
