@@ -1,4 +1,4 @@
-= form_for :problem, controller: 'projects/problems' do |f|
+= form_for [@project, @problem] do |f|
   - if @problem.errors.any?
     #error_explanation
       h2 = "#{pluralize(@problem.errors.count, "error")} Interdits ce problème d'être sauvegardé:"

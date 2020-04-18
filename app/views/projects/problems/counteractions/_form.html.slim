@@ -1,4 +1,4 @@
-= form_for :counteraction, controller: 'projects/problems/couteractions' do |f|
+= form_for [@project, @problem, @counteraction] do |f|
   - if @counteraction.errors.any?
     #error_explanation
       h2 = "#{pluralize(@counteraction.errors.count, "error")} prohibited this counteraction from being saved:"
