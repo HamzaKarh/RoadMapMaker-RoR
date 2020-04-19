@@ -10,7 +10,10 @@
 //= require_tree . 
 
 
+// <svg width="500" height="500"><line x1="50" y1="50" x2="350" y2="350" stroke="black"/></svg>
+
 jQuery(document).ready( () => {
+    var field = document.getElementById("wbsDrawingField")
     function dragMoveListener (event) {
         var target = event.target
         // keep the dragged position in the data-x/data-y attributes
@@ -29,11 +32,17 @@ jQuery(document).ready( () => {
 
     $('#generate_button').on('click', function(e) {
         var style = {'background-color':'#0095B6', 
-          'min-height': '6.5em',
-          'width': '6.5em',
-          'border-radius': '0.75em',
-          'padding': '4%', 
-          'color': 'white'
+          'text-align': 'center',
+          'min-height': '4em',
+          'min-width': '2.5em',
+          'max-width': '4em',
+          'border-radius': '10px',
+          'padding-top': '10px ', 
+          'padding-bottom': '10px ', 
+          'padding-left': '10px ', 
+          'padding-right': '10px ', 
+          'color': 'white',
+          'position' : 'absolute'
         }
         selected = document.getElementById("select_tag").value
         anchor = document.getElementById("spawn_anchor")
@@ -42,17 +51,79 @@ jQuery(document).ready( () => {
         action_holder.classList.add('draggable')
         action_holder.innerHTML = selected
         anchor.appendChild(action_holder)
-        interact('.draggable').draggable({
-            inertia: false,
-            autoScroll: true,
-            // dragMoveListener from the dragging demo above
-            onmove: dragMoveListener
-        })
-        window.dragMoveListener = dragMoveListener
+
+
+
     
-    
-    
+
     })
+
+    interact('.draggable').draggable({
+        
+        autoScroll: true,
+        inertia: true,
+        listeners: {
+            // call this function on every dragmove event
+            move: dragMoveListener
+        }
+        
+    })
+
+
+
+    interact('#wbsDrawingField').dropzone({
+        // only accept elements matching this CSS selector
+        accept: '.draggable',
+        // Require a 75% element overlap for a drop to be possible
+        overlap: 0.75,
+      
+        // listen for drop related events:
+        
+        ondropactivate: function (event) {
+          // add active dropzone feedback
+        },
+        ondragenter: function (event) {
+          // feedback the possibility of a drop
+            var dropzoneElement = event.target
+            dropzoneElement.classList.add('drop-target')
+        },
+        ondragleave: function (event) {
+          // remove the drop feedback style
+        },
+        ondrop: function (event) {
+            var draggableElement = event.relatedTarget, dropzoneElement = event.target
+          
+            dropzoneElement.classList.add('drop-target')
+            draggableElement.classList.remove('draggable')
+            draggableElement.classList.add('dropped')
+            interact('.dropped').draggable({
+        
+                autoScroll: true,
+                inertia: true,
+                modifiers: [
+                    interact.modifiers.restrictRect({
+                        restriction: dropzoneElement,
+                        endOnly: true
+                  })],
+                listeners: {
+                    // call this function on every dragmove event
+                    move: dragMoveListener
+                }
+                
+            })
+
+        }
+
+    })
+    
+      
+
+
+    $('.draggable').on('click', function(e) {
+        //selection code
+    })
+
+
     
     
     
