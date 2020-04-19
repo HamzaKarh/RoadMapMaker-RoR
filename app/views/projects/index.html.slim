@@ -11,12 +11,10 @@
           image
             = image_tag "CID.png"
           bouton
-            br
-            br
-            br
-            = link_to "Nouveau Projet", new_project_path
-            br
-            = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
+            newprojet
+              = link_to "Nouveau Projet", new_project_path
+            Quitter
+              = link_to "Quitter", destroy_user_session_path, :method => :delete 
 
       
       .TableIndex

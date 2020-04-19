@@ -21,26 +21,68 @@
         column-count: 2
 
         .CidProject
+            margin-left: -25%
             position: relative
             height: 100%
             text-align: center
 
             .Box
+                width: 100%
                 position: relative
                 top: 10%
 
                 bouton
-                    input[type="submit"]
-                        border-radius: 25px
-                        border-style: hidden
-                        font-size: 1rem
-                        background-color: rgba(38, 112, 251, 0.904)
-                        -webkit-box-shadow: 0 10px 30px 0px rgba(38, 112, 251, 0.657)
-                        color: white
-                    input[type="submit"]:hover
-                        background-color: rgb(38, 112, 251)
-    
+                    display: flex
+                    text-align:  center
+                    flex-direction: column                    
+                    height: 100%
+                    position: relative
+                    padding: 1.5%
+                    border-style: hidden
+                    color: white
+                    
+                    
+                    moz-transition: all .4s
+                    newprojet
+                        position: relative
+                        left: 48%
+                        transform: translate(-50%, -50%)
+                        margin: 2%
+                        margin-bottom: 5%
+                        margin-top: 5%
+
+                        a
+
+                            background: rgb(38, 112, 251)
+                            width: 25%
+                            border-radius: 10px
+                            padding: 1.5%
+                            padding-right: 3%
+                            padding-left: 3%
+                            color: white
+                            text-decoration: none
+                        a:hover
+                            background: rgb(30, 95, 214)
+                    Quitter
+                        position: relative
+                        left: 49%
+                        transform: translate(-50%, -50%)
+                        margin: 1%
+                        a
+                            
+                            border-radius: 10px
+                            padding: 1.5%
+                            padding-right: 5%
+                            padding-left: 5%
+                            background: #d32c2c    
+                            width: 25%                                      
+                            color: white
+                            text-decoration: none
+                        a:hover
+                            background: #e71e1e
+
         .TableIndex
+            margin-left: -25%
             height: 100%
             border-collapse: collapse
             position: relative

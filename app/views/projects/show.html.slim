@@ -1,62 +1,75 @@
 /*p#notice = notice
 
-.TableProjet
-  table.display-table
-    thead.table-header
-      tr.table-header--row
-        th Nom du Projet
-        th = @project.name
+.Menu
 
-    tbody
-      tr
-        td Nom de la companie 
-        td = @project.client_company_name
-      tr
-        td Nom du Client
-        td = @project.client_name
-      tr
-        td Description
-        td = @project.description
+  .Title
+    h1 = @project.name
 
-td = button_to 'Show WBS list', project_wbs_path(@project), :method => :get
+  .TableProjet
+    table.display-table
+
+      tbody
+        tr
+          td Nom de la companie 
+          td = @project.client_company_name
+        tr
+          td Nom du Client
+          td = @project.client_name
+        tr
+          td Description
+          td = @project.description
+        tr
+          td Equipe du Projet
+          td = @project.team
+        tr
+          td Personnel Impliqué
+          td = @project.extworkforce
+        tr
+          td Livrable
+          td = @project.deliverable
+        tr
+          td Livrable
+          td = @project.deliverable
+
+  td = button_to 'Show WBS list', project_wbs_path(@project), :method => :get
 
 
-p 
+  p 
 
-  .problem-title
-    strong Problems: 
+    .problem-title
+      strong Problems: 
 
 
-  .problem-box
-    - @project.problems.each do |problem|
-      .problem-container
-        p
-          Strong Problem Name: 
-          = problem.name
-        p
-          Strong Description:
-          = problem.description
-        .action-box
+    .problem-box
+      - @project.problems.each do |problem|
+        .problem-container
+          p
+            Strong Problem Name: 
+            = problem.name
+          p
+            Strong Description:
+            = problem.description
+          .action-box
+            
+            i
+              Strong Action list
+          - problem.counteractions.each do |counteraction|
+            .action-container
+              p
+                Strong Action Name: 
+                = counteraction.name
+              /p
+                Strong Description:
+                = counteraction.description
+              td = button_to 'Edit', edit_project_problem_counteraction_path(@project,  problem, counteraction), :method => :get
+              td = button_to 'Show action', [@project, problem, counteraction], :method => :get
+              td = button_to 'Delete', [@project,problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
           
-          i
-            Strong Action list
-        - problem.counteractions.each do |counteraction|
-          .action-container
-            p
-              Strong Action Name: 
-              = counteraction.name
-            /p
-              Strong Description:
-              = counteraction.description
-            td = button_to 'Edit', edit_project_problem_counteraction_path(@project,  problem, counteraction), :method => :get
-            td = button_to 'Show action', [@project, problem, counteraction], :method => :get
-            td = button_to 'Delete', [@project,problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
-        
-        p
-          td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
-          td = button_to 'Show problem', [@project, problem], :method => :get
-          td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
-          td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
+          p
+            td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
+            td = button_to 'Show problem', [@project, problem], :method => :get
+            td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+            td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
 
 
 
@@ -66,9 +79,9 @@ p
 
 
 
-=> button_to 'Edit', edit_project_path(@project), :method => :get
+  => button_to 'Edit', edit_project_path(@project), :method => :get
 
-=> button_to 'Supprimer', @project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
+  => button_to 'Supprimer', @project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
 
-=< button_to 'Back', projects_path
+  =< button_to 'Back', projects_path, :method => :get
 
