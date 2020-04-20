@@ -39,9 +39,7 @@ jQuery(document).ready( () => {
         var action_holder = document.createElement("div")
         action_id = action_id + 1
         action_holder.id = 'action-'+action_id
-        $(action_holder).css({ 'position' : 'absolute'
-        
-        })
+        $(action_holder).css({ 'position' : 'absolute'})
         action_holder.classList.add('draggable')
         action_holder.innerHTML = selected_action
         anchor.appendChild(action_holder)
@@ -105,19 +103,23 @@ jQuery(document).ready( () => {
                 
             })
             var selected = []
+            function clearSelect(){
+                selected.forEach(function(value){
+                    var val = document.getElementById(value)
+                    selected.splice(selected.indexOf(value), 1)
+                    val.classList.remove('selected')
+                    console.log('removing '+ value)
+                })    
+            }
 
             $('.dropped').on('click', function(e) {
                 var clicked = e.target.id
                 if (!selected.includes(clicked) && selected.length < 2){
                     selected.push(clicked)
                     e.target.classList.add('selected')
-
-        
                 }else if (selected.includes(clicked)){
-                    selected.splice(selected.indexOf(clicked), 1);
+                    selected.splice(selected.indexOf(clicked), 1)
                     e.target.classList.remove('selected')
-
-                    
                 }
             })
 
@@ -132,7 +134,8 @@ jQuery(document).ready( () => {
                             val.classList.remove('blue')
                             val.classList.add('red')
                         })
-                    break;
+                        clearSelect()
+                        break;
                     case 'blue':
                         selected.forEach(function(value){
                         var val = document.getElementById(value)
@@ -140,7 +143,10 @@ jQuery(document).ready( () => {
                         val.classList.remove('yellow')
                         val.classList.remove('red')
                         val.classList.add('blue')
+
                     })
+                    clearSelect()
+
                     break;
                     case 'green':
                         selected.forEach(function(value){
@@ -150,6 +156,7 @@ jQuery(document).ready( () => {
                         val.classList.remove('red')
                         val.classList.add('green')
                     })
+                    clearSelect()
                     break;
                     case 'yellow':
                         selected.forEach(function(value){
@@ -158,14 +165,59 @@ jQuery(document).ready( () => {
                         val.classList.remove('blue')
                         val.classList.remove('red')
                         val.classList.add('yellow')
+                        
                     })
+                    clearSelect()
                     break;
                     
                     default:
                 }
             
             })
+            
+            $('#link_action_button').on('click', function(e) {
+                
+                if(selected.length < 2 ){
+                    console.log('Please select 2 actions')
+                }else if(selected.length >= 2){
+                    var link_container = document.createElement("svg")
+                    var link_line = document.createElement("line")
+                    var link_spawn = document.getElementById("spawn_anchor")
+                    var link_id = "link-"
+                    var positions = []
+                    for (i = 0; i<2 ; i++){
+                        var tmp = selected[i] + "" 
+                        link_id += tmp.substring(7)
+                        positions.push(document.getElementById(selected[i]).getAttribute("data-x"))
+                        positions.push(document.getElementById(selected[i]).getAttribute("data-y"))
+                        console.log(document.getElementById(selected[i]).getAttribute("data-x") +"  "+ document.getElementById(selected[i]).getAttribute("data-y"))
+                    }
 
+                    var height = Math.abs(Number(positions[1])- Number(positions[3]))
+                    var width = Math.abs(Number(positions[0])- Number(positions[2]))
+                    console.log(height + " " + width)
+                    //link_container.style.width = width+"px"
+                    //link_container.style.height = height+"px"
+                    link_container.id =link_id
+                    link_spawn.appendChild(link_container)
+                    link_container.appendChild(link_line)
+                    link_container.setAttribute('height' , Math.round(height) )
+                    link_container.setAttribute('width' , Math.round(width) )
+                    link_line.setAttribute('stroke' , 'black')
+                    link_line.setAttribute('x1' , "" + Math.round(positions[0]))
+                    link_line.setAttribute('x2' , "" + Math.round(positions[2]))
+                    link_line.setAttribute('y1' , "" + Math.round(positions[1]))
+                    link_line.setAttribute('y2' , "" + Math.round(positions[3]))                    
+                }
+                
+                
+                
+                clearSelect()
+            })
+            
+            $('#wbsDrawingField').on('click', function(e) {
+                clearSelect()
+            })
         }
 
     })
