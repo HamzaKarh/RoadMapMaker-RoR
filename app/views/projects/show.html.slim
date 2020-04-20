@@ -3,85 +3,117 @@
 .Menu
 
   .Title
-    h1 = @project.name
+    .icon
+      =< link_to image_tag("return.png", size: "40x40"), projects_path, :method => :get
+      => link_to image_tag("delete.png", size: "40x40"), @project, data: { confirm: 'Are you sure?' }, method: :delete
+      => link_to image_tag("edit1.png", size: "40x40"), edit_project_path(@project), :method => :get
+        
+    .titre
+        h1 = @project.name
+    .icondroit
+      = link_to image_tag("list.png", size: "40x40"), project_wbs_path(@project), :method => :get
 
   .TableProjet
     table.display-table
 
       tbody
         tr
-          td Nom de la companie 
-          td = @project.client_company_name
+          td.gauche Nom de la companie 
+          td.droite = @project.client_company_name
         tr
-          td Nom du Client
-          td = @project.client_name
+          td.gauche Nom du Client
+          td.droite = @project.client_name
         tr
-          td Description
-          td = @project.description
+          td.gauche Description
+          td.droite = @project.description
         tr
-          td Equipe du Projet
-          td = @project.team
+          td.gauche Equipe du Projet
+          td.droite = @project.team
         tr
-          td Personnel Impliqué
-          td = @project.extworkforce
+          td.gauche Personnel Impliqué
+          td.droite = @project.extworkforce
         tr
-          td Livrable
-          td = @project.deliverable
+          td.gauche Livrable
+          td.droite = @project.deliverable
         tr
-          td Livrable
-          td = @project.deliverable
+          td.gauche Budget
+          td.droite = @project.budget
 
-  td = button_to 'Show WBS list', project_wbs_path(@project), :method => :get
+  
+  .BoxProbleme
+    .Title
+      .titre
+        h1 Brainstorming
+    .Colonne
 
-
-  p 
-
-    .problem-title
-      strong Problems: 
-
-
-    .problem-box
-      - @project.problems.each do |problem|
-        .problem-container
-          p
-            Strong Problem Name: 
-            = problem.name
-          p
-            Strong Description:
-            = problem.description
-          .action-box
+      .problem-box
+        titre
+          icon
+            = link_to image_tag("plus.png", size: "40x40"), new_project_problem_path(@project), :method => :get
             
-            i
-              Strong Action list
-          - problem.counteractions.each do |counteraction|
-            .action-container
-              p
-                Strong Action Name: 
-                = counteraction.name
-              /p
-                Strong Description:
-                = counteraction.description
-              td = button_to 'Edit', edit_project_problem_counteraction_path(@project,  problem, counteraction), :method => :get
-              td = button_to 'Show action', [@project, problem, counteraction], :method => :get
-              td = button_to 'Delete', [@project,problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
+          h1 Problèmes
+        
+        .Table-Problem
+          table.display-table
+            tbody.oui
+                - @project.problems.each do |problem|
+                  tr
+                    td.gauche = problem.name
+                    td.droite 
+                      = link_to image_tag("plusnoir.png", size: "25x25"), new_project_problem_counteraction_path(@project, problem), :method => :get
+                      = link_to image_tag("editnoir.png", size: "25x25"), edit_project_problem_path(@project,  problem), :method => :get
+                      = link_to image_tag("deletenoir.png", size: "25x25"), [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+      .action-box
+        titre
+          h1 Actions
+
+        .Table-Action
+
+          table.display-table
+            tbody.oui
+                - @project.problems.each do |problem|
+                  - problem.counteractions.each do |counteraction|
+                    tr
+                      td.gauche = counteraction.name
+                      td.droite 
+                        = link_to image_tag("plusnoir.png", size: "25x25"), new_project_problem_counteraction_path(@project, problem), :method => :get
+                        = link_to image_tag("editnoir.png", size: "25x25"), edit_project_problem_path(@project,  problem), :method => :get
+                        = link_to image_tag("deletenoir.png", size: "25x25"), [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+
+
+
+    / .problem-box
+    /    - @project.problems.each do |problem|
+    /      .problem-container
+    /        p
+    /          Strong Problem Name: 
+    /          = problem.name
+    /        p
+    /          Strong Description:
+    /          = problem.description
+    /        .action-box
+            
+    /          i
+    /            Strong Action list
+    /        - problem.counteractions.each do |counteraction|
+    /          .action-container
+    /            p
+    /              Strong Action Name: 
+    /              = counteraction.name
+    /            p
+    /              Strong Description:
+    /              = counteraction.description
+    /            td = button_to 'Edit', edit_project_problem_counteraction_path(@project,  problem, counteraction), :method => :get
+    /            td = button_to 'Show action', [@project, problem, counteraction], :method => :get
+    /            td = button_to 'Delete', [@project,problem,counteraction] , data: { confirm: 'Are you sure?' }, method: :delete
           
-          p
-            td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
-            td = button_to 'Show problem', [@project, problem], :method => :get
-            td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
-            td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
+    /        p
+    /          td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
+    /          td = button_to 'Show problem', [@project, problem], :method => :get
+    /          td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+    /          td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
 
 
 
 
-
-
-
-
-
-  => button_to 'Edit', edit_project_path(@project), :method => :get
-
-  => button_to 'Supprimer', @project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
-
-  =< button_to 'Back', projects_path, :method => :get
 

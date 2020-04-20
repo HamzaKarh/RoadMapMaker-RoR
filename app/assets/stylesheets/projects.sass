@@ -3,46 +3,65 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .Menu
-    background: grey
+    background: #3b3b3b
     max-width: 100%
     min-height: 100%
     height: 100%
 
     .Title
-        h1
-            margin: 0px
-            padding: 20px
+        display: flex
+        align-items: center
         text-align: center
         color: white
         background: #3b3b3b
 
-    .TableProjet
 
-        border-collapse: collapse
-        position: relative
+        .Title h1
+            margin: 0px
+            padding: 1.5%
 
-        table
-        border-collapse: collapse
-        min-width: 100%
-        text-align: left
-        
-        tbody
-            
-            td
+        .icon
+            margin-left: 5%
+            display: flex
+            justify-content: space-between
+            width: 20%
+            z-index: 10
                 
+        .titre
+            margin-left: -23%
+            flex-grow: 5
+        
+        .icondroit
+            margin-right: 2%
+
+    .TableProjet
+ 
+            height: 100%
+            border-color: 
+            position: relative
+
+        table.display-table
+            min-width: 100%
+            border-collapse: collapse
+
+        tbody
+
+            td
+                padding: 1%
                 font-size: 1.5rem
-
-            tr:nth-child(odd)
+            
+            td.gauche
+                text-align: center
+                background: #5f5c5c
+                color: white
+            td.droite
+                max-width: 70%
+                min-width: 70%
                 background: #ffffff
+                border-bottom-style: solid
+                border-bottom-color: #bdbdbd
+                border-bottom-width: 1px
 
-            tr:nth-child(odd):hover
-                background-color: #a39f9f2c
-
-            tr:nth-child(even)
-                background: #f6f6f6ed
-
-            tr:nth-child(even):hover
-                background-color: #a39f9f2c
 
 .LeBoutontable
     
@@ -62,19 +81,154 @@
 
 
 //Show apres index
+.BoxProbleme
+    max-width: 100%
+    min-height: 100%
+    height: 100%
+    background: #5f5c5c
 
+    .Title
+        .titre
+            margin-left: 0%
 
-.problem-box
-    display: inline-flex
-    flex-flow: row wrap
-    .problem-container
-        width: 20%
-        margin: 2.5%
+    .Colonne
+        overflow:auto
+        position: relative
+        height: 80%
+        min-height: 100%
+        column-span: all
+        column-count: 2
+
+        .problem-box
+            position: relative
+            height: 100%
+            max-height: 80%
+            
+            titre
+
+                margin: 0%
+                display: flex
+                color: white
+
+                icon
+                    margin-top: 3%
+                    margin-left: 30%
+
+                h1
+                    margin: 0%
+                    margin-top: 3%
+                    margin-left: 5%
+                    margin-bottom: 3%
+
+            
+            .Table-Problem
+                overflow: scroll
+                position: relative
+                table-layout: fixed
+                margin-left: auto
+                margin-right: auto
+                max-height: 80%
+                width: 90%
+                align-items: center
+                background: white
+                height: 80%
+                
+                
+                
+                table.display-table
+                    word-wrap: break-word
+                    width: 100%
+                    max-width: 100%
+                    border-collapse: collapse
+                    table-layout: fixed
+
+                    td
+                        overflow-wrap: break-word
+                        width: 90%
+                        padding: 10px
+                        padding-left: 20px
+                        font-size: 1.2rem
+
+                    
+                    td.gauche
+                        width: 80%
+                        border-bottom-style: solid
+                        border-bottom-color: #bdbdbd
+                        border-bottom-width: 1px
+                    td.droite
+                        display: flex
+                        text-align: right
+                        justify-content: space-between
+                        
+                
+        
         .action-box
-            text-align: center
-            display: inline-flex
+            position: relative
+            height: 80%
+            
+            titre
 
-            .action-container
+                display: flex
+                color: white
+
+                h1
+                    margin: 3%
+                    margin-left: 35%
+
+            .Table-Action
+                overflow: scroll
+                position: relative
+                table-layout: fixed
+                margin-left: auto
+                margin-right: auto
+                max-height: 80%
+                width: 90%
+                align-items: center
+                background: white
+                
+                
+                
+                table.display-table
+                    word-wrap: break-word
+                    width: 100%
+                    max-width: 100%
+                    border-collapse: collapse
+                    table-layout: fixed
+
+                    td
+                        overflow-wrap: break-word
+                        width: 90%
+                        padding: 10px
+                        padding-left: 20px
+                        font-size: 1.2rem
+
+                    
+                    td.gauche
+                        width: 80%
+                        border-bottom-style: solid
+                        border-bottom-color: #bdbdbd
+                        border-bottom-width: 1px
+                    td.droite
+                        display: flex
+                        text-align: right
+                        justify-content: space-between
+                            
+                
+
+
+
+
+// .problem-box
+//     display: inline-flex
+//     flex-flow: row wrap
+//     .problem-container
+//         width: 20%
+//         margin: 2.5%
+//         .action-box
+//             text-align: center
+//             display: inline-flex
+
+//             .action-container
 
 
   
