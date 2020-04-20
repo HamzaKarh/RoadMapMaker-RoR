@@ -13,7 +13,9 @@
 // <svg width="500" height="500"><line x1="50" y1="50" x2="350" y2="350" stroke="black"/></svg>
 
 jQuery(document).ready( () => {
+    
     var field = document.getElementById("wbsDrawingField")
+    var action_id = 0
     function dragMoveListener (event) {
         var target = event.target
         // keep the dragged position in the data-x/data-y attributes
@@ -31,27 +33,19 @@ jQuery(document).ready( () => {
     }
 
     $('#generate_button').on('click', function(e) {
-        var style = {'background-color':'#0095B6', 
-          'text-align': 'center',
-          'min-height': '4em',
-          'min-width': '2.5em',
-          'max-width': '4em',
-          'border-radius': '10px',
-          'padding-top': '10px ', 
-          'padding-bottom': '10px ', 
-          'padding-left': '10px ', 
-          'padding-right': '10px ', 
-          'color': 'white',
-          'position' : 'absolute'
-        }
-        selected = document.getElementById("select_tag").value
+        
+        selected_action = document.getElementById("select_tag").value
         anchor = document.getElementById("spawn_anchor")
         var action_holder = document.createElement("div")
-        $(action_holder).css(style)
+        action_id = action_id + 1
+        action_holder.id = 'action-'+action_id
+        $(action_holder).css({ 'position' : 'absolute'
+        
+        })
         action_holder.classList.add('draggable')
-        action_holder.innerHTML = selected
+        action_holder.innerHTML = selected_action
         anchor.appendChild(action_holder)
-
+        
 
 
     
@@ -70,13 +64,12 @@ jQuery(document).ready( () => {
     })
 
 
-
     interact('#wbsDrawingField').dropzone({
         // only accept elements matching this CSS selector
         accept: '.draggable',
         // Require a 75% element overlap for a drop to be possible
         overlap: 0.75,
-      
+        
         // listen for drop related events:
         
         ondropactivate: function (event) {
@@ -94,8 +87,8 @@ jQuery(document).ready( () => {
             var draggableElement = event.relatedTarget, dropzoneElement = event.target
           
             dropzoneElement.classList.add('drop-target')
-            draggableElement.classList.remove('draggable')
             draggableElement.classList.add('dropped')
+            draggableElement.classList.remove('draggable')
             interact('.dropped').draggable({
         
                 autoScroll: true,
@@ -111,6 +104,67 @@ jQuery(document).ready( () => {
                 }
                 
             })
+            var selected = []
+
+            $('.dropped').on('click', function(e) {
+                var clicked = e.target.id
+                if (!selected.includes(clicked) && selected.length < 2){
+                    selected.push(clicked)
+                    e.target.classList.add('selected')
+
+        
+                }else if (selected.includes(clicked)){
+                    selected.splice(selected.indexOf(clicked), 1);
+                    e.target.classList.remove('selected')
+
+                    
+                }
+            })
+
+            $('.colorPalet').on('click', function(e) {
+                var clicked = e.target.id
+                switch(clicked) {
+                    case 'red':
+                        selected.forEach(function(value){
+                            var val = document.getElementById(value)
+                            val.classList.remove('green')
+                            val.classList.remove('yellow')
+                            val.classList.remove('blue')
+                            val.classList.add('red')
+                        })
+                    break;
+                    case 'blue':
+                        selected.forEach(function(value){
+                        var val = document.getElementById(value)
+                        val.classList.remove('green')
+                        val.classList.remove('yellow')
+                        val.classList.remove('red')
+                        val.classList.add('blue')
+                    })
+                    break;
+                    case 'green':
+                        selected.forEach(function(value){
+                        var val = document.getElementById(value)
+                        val.classList.remove('yellow')
+                        val.classList.remove('blue')
+                        val.classList.remove('red')
+                        val.classList.add('green')
+                    })
+                    break;
+                    case 'yellow':
+                        selected.forEach(function(value){
+                        var val = document.getElementById(value)
+                        val.classList.remove('green')
+                        val.classList.remove('blue')
+                        val.classList.remove('red')
+                        val.classList.add('yellow')
+                    })
+                    break;
+                    
+                    default:
+                }
+            
+            })
 
         }
 
@@ -119,9 +173,7 @@ jQuery(document).ready( () => {
       
 
 
-    $('.draggable').on('click', function(e) {
-        //selection code
-    })
+
 
 
     
@@ -169,7 +221,7 @@ jQuery(document).ready( () => {
         }
     })
 
-document.getElementById('actionSpawn').addEventListener("click", $(val = select_tag.options[select_tag.selectedIndex].value, {
+document.getElementById('actionSpawn').addEventListener("click", $(val = select_tag.options[select_tag.selectedIndex].val, {
     url: "/counteractions/" + val,
     type: "GET",
     datatype: "json",
