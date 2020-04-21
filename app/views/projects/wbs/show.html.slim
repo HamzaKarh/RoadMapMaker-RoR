@@ -29,6 +29,6 @@ p
 => button_to 'Draw', project_wb_draw_path(@project,@wb), :method => :get
 
 
-=> button_to 'Edit', edit_project_wb_path(@project, @wb)
+=> button_to 'Edit', edit_project_wb_path(@project, @wb), :method => :get
 
-=< button_to 'Back', project_wbs_path(@project)
+=< button_to 'Back', project_wbs_path(@project), :method => :get
