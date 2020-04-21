@@ -61,6 +61,20 @@ jQuery(document).ready( () => {
         
     })
 
+    function clearSelected(){
+        var selected = document.getElementsByClassName("selected")
+        console.log("test")
+        for (i=0; i<selected.length; i++){
+            
+            var val = document.getElementById(selected[i].id)
+            val.classList.remove('selected')
+            
+        }
+        console.log("selected cleared")
+
+    }
+    
+
 
     interact('#wbsDrawingField').dropzone({
         // only accept elements matching this CSS selector
@@ -102,30 +116,85 @@ jQuery(document).ready( () => {
                 }
                 
             })
-            var selected = []
-            function clearSelect(){
-                selected.forEach(function(value){
-                    var val = document.getElementById(value)
-                    selected.splice(selected.indexOf(value), 1)
-                    val.classList.remove('selected')
-                    console.log('removing '+ value)
-                })    
-            }
+
 
             $('.dropped').on('click', function(e) {
-                var clicked = e.target.id
-                if (!selected.includes(clicked) && selected.length < 2){
-                    selected.push(clicked)
-                    e.target.classList.add('selected')
-                }else if (selected.includes(clicked)){
-                    selected.splice(selected.indexOf(clicked), 1)
-                    e.target.classList.remove('selected')
+                var selected = document.getElementsByClassName("selected") 
+                if (selected.length < 2){
+                    val = document.getElementById(e.target.id)
+                    val.classList.add("selected")
                 }
             })
 
             $('.colorPalet').on('click', function(e) {
                 var clicked = e.target.id
-                switch(clicked) {
+                changeColor(clicked)
+                
+            })
+            
+            $('#link_action_button').on('click', function(e) {
+                Link()
+                refreshLinksXY()
+                clearSelect() 
+            })
+
+
+
+
+
+
+
+
+            //treatment methods
+
+            function Link(){
+                var selected = document.getElementsByClassName("selected")
+
+
+
+                // ------------------------------------------------------------------ \\
+                var link_container = document.createElement("svg")
+                var link_line = document.createElement("line")
+                var link_spawn = document.getElementById("spawn_anchor")
+                var link_id = "link-"
+                console.log( "selected before linking : "+selected.length)
+                var i = 0
+                selected.forEach(function(value){
+                    if (i<2){ 
+                        var tmp = value
+                        link_id += tmp.substring(7)
+                        console.log("link log x,y: " +document.getElementById(value).getAttribute("data-x") +"  "+ document.getElementById(value).getAttribute("data-y"))
+                        i++
+                    }
+                })
+                link_container.classList.add("link")
+                link_container.id =link_id
+                link_spawn.appendChild(link_container)
+                link_container.appendChild(link_line)
+            }
+
+            function refreshLinksXY(){
+                $('svg.link').each(function(){
+                    var $link = $(this)
+                    var linkId = $link.id
+                    var action1 = document.getElementById("action-"+linkId.substr(5))
+                    var action2 = document.getElementById("action-"+linkId.substr(6))
+                    var x1, x2, y2, y1
+                    x1 = Number(action1.getAttribute("data-x"))
+                    y1 = Number(action1.getAttribute("data-y"))
+                    x2 = Number(action2.getAttribute("data-x"))
+                    y2 = Number(action2.getAttribute("data-y"))
+                    console.log("x1:" + x1 + " y1:" + y1 +" x2:" + x2 + " y2:" + y2 )
+                    var dim1 = x1 - x2 
+                    var dim2 = y1 - y2
+                    console.log("dim1:" + dim1 +" dim2" + dim2)
+                    
+                    
+                })
+            }
+
+            function changeColor(value){
+                switch(value) {
                     case 'red':
                         selected.forEach(function(value){
                             var val = document.getElementById(value)
@@ -173,10 +242,31 @@ jQuery(document).ready( () => {
                     default:
                 }
             
-            })
+            }
             
-            $('#link_action_button').on('click', function(e) {
-                
+            $('#wbsDrawingField').on('click', function(e) {
+                clearSelected()
+            })
+
+
+            
+        }
+
+    })
+    
+      
+
+
+
+
+
+    
+    
+    
+ 
+})
+
+               /*
                 if(selected.length < 2 ){
                     console.log('Please select 2 actions')
                 }else if(selected.length >= 2){
@@ -210,29 +300,8 @@ jQuery(document).ready( () => {
                     link_line.setAttribute('y2' , "" + Math.round(positions[3]))                    
                 }
                 
-                
-                
-                clearSelect()
-            })
-            
-            $('#wbsDrawingField').on('click', function(e) {
-                clearSelect()
-            })
-        }
+*/
 
-    })
-    
-      
-
-
-
-
-
-    
-    
-    
- 
-})
 /*
 
 
