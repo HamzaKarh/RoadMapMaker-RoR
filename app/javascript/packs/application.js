@@ -63,14 +63,13 @@ jQuery(document).ready( () => {
 
     function clearSelected(){
         var selected = document.getElementsByClassName("selected")
-        console.log("test")
         for (i=0; i<selected.length; i++){
             
             var val = document.getElementById(selected[i].id)
             val.classList.remove('selected')
             
         }
-        console.log("selected cleared")
+        console.log("selection cleared")
 
     }
     
@@ -133,9 +132,9 @@ jQuery(document).ready( () => {
             })
             
             $('#link_action_button').on('click', function(e) {
-                Link()
+                renderLink()
                 refreshLinksXY()
-                clearSelect() 
+                clearSelected() 
             })
 
 
@@ -147,34 +146,56 @@ jQuery(document).ready( () => {
 
             //treatment methods
 
-            function Link(){
+            function renderLink(){
                 var selected = document.getElementsByClassName("selected")
 
-
-
-                // ------------------------------------------------------------------ \\
-                var link_container = document.createElement("svg")
-                var link_line = document.createElement("line")
-                var link_spawn = document.getElementById("spawn_anchor")
-                var link_id = "link-"
-                console.log( "selected before linking : "+selected.length)
-                var i = 0
-                selected.forEach(function(value){
-                    if (i<2){ 
-                        var tmp = value
-                        link_id += tmp.substring(7)
-                        console.log("link log x,y: " +document.getElementById(value).getAttribute("data-x") +"  "+ document.getElementById(value).getAttribute("data-y"))
-                        i++
+                if (selected.length == 2){
+                    var link_container = document.createElement("svg")
+                    var link_line = document.createElement("line")
+                    var link_spawn = document.getElementById("spawn_anchor")
+                    var link_id = "link-"
+                    
+                    for (i = 0; i<selected.length ; i++){
+                        link_id += selected[i].id.substr(7)
+                        link_id += "|"
                     }
-                })
-                link_container.classList.add("link")
-                link_container.id =link_id
-                link_spawn.appendChild(link_container)
-                link_container.appendChild(link_line)
+                    link_container.id =link_id
+                    link_container.classList.add("link")
+                    link_spawn.appendChild(link_container)
+                    link_container.appendChild(link_line)
+                }
             }
 
             function refreshLinksXY(){
-                $('svg.link').each(function(){
+                var links = document.getElementsByClassName("link")
+                for(i = 0; i<links.length; i++){
+                    var action1 = "action-", action2 = "action-"
+                    var link_id = links[i].id.substr(5)
+                    console.log(link_id)
+                    var nextaction = false
+                    var charCounter = 0
+                    while( link_id.substr(charCounter, charCounter+1) ){
+                        if(link_id.substr(charCounter, charCounter+1) == "|"){
+                            nextaction = true;
+                            charCounter++
+                        }
+                        switch(nextaction){
+                            case false :
+                                action1 += link_id.substr(charCounter, charCounter+1)
+                                console.log("true"+link_id.substr(charCounter, charCounter+1))
+                                break;
+                            case true :
+                                action2 += link_id.substr(charCounter, charCounter+1)
+                                console.log("false"+link_id.substr(charCounter, charCounter+1))
+                                break;
+                        }
+                        charCounter++
+                    }
+                    console.log("1" + action1)
+                    console.log("2" +action2)
+                }
+
+                /*$('svg.link').each(function(){
                     var $link = $(this)
                     var linkId = $link.id
                     var action1 = document.getElementById("action-"+linkId.substr(5))
@@ -190,7 +211,7 @@ jQuery(document).ready( () => {
                     console.log("dim1:" + dim1 +" dim2" + dim2)
                     
                     
-                })
+                })*/
             }
 
             function changeColor(value){
