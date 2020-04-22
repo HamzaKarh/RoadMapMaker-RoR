@@ -16,6 +16,83 @@ jQuery(document).ready( () => {
     
     var field = document.getElementById("wbsDrawingField")
     var action_id = 0
+    
+    function renderLink(){
+        var selected = document.getElementsByClassName("selected")
+        
+        if (selected.length == 2){
+            var link_spawn = document.getElementById("wbsDrawingField")
+            var link_container = document.createElement("canvas")
+            var link_id = "link-"
+            
+            for (i = 0; i<selected.length ; i++){
+                link_id += selected[i].id.substr(7)
+                link_id += "|"
+            }
+            link_container.id =link_id
+            link_container.classList.add("link")
+            link_container.setAttribute("height", document.getElementById("wbsDrawingField").innerHeight)
+            link_container.setAttribute("width", document.getElementById("wbsDrawingField").innerWidth)
+            link_spawn.appendChild(link_container)
+        }
+    }
+    
+    function refreshLinksXY(){
+        var links = document.getElementsByTagName("canvas")
+        for(i = 0; i< links.length; i++){
+            console.log("test1")
+
+            //selecting the right actionbox
+            var action1 = "action-", action2 = "action-"
+            var link_id = links[i].id.substr(5)
+            console.log(link_id)
+            var charCounter = 0
+            var index = 0
+            for (i = 0; i<2 ; i++){
+                while(link_id.slice(charCounter, charCounter+1) != "|" && link_id.slice(charCounter, charCounter+1)  ){
+                    charCounter++
+                }
+                if(i == 0){
+                    action1 += link_id.substr(index, charCounter)
+                    index = charCounter + 1
+                    console.log("1 :" + action1)
+                }else if(i == 1){
+                    action2 += link_id.substr(index, charCounter-2)
+                    console.log("2 :" + action2)
+                }
+                charCounter ++
+            }
+            var field = document.getElementById("wbsDrawingField")
+            //refreshing link xy and length
+            var x1 = document.getElementById(action1).getAttribute("data-x");
+            var y1 = document.getElementById(action1).getAttribute("data-y");
+            var x2 = document.getElementById(action2).getAttribute("data-x");
+            var y2 = document.getElementById(action2).getAttribute("data-y");
+            //var width = Math.abs(Number(x1) - Number(x2))
+            //var height = Math.abs(Number(y1) - Number(y2))
+            var link = document.getElementById("link-"+link_id)
+            var tmpid = "link-"+link_id
+            console.log(link.id)
+            field.removeChild(link)
+            var link = document.createElement("canvas")
+            link.id = tmpid
+            link.setAttribute("height", document.getElementById("wbsDrawingField").getBoundingClientRect().height)
+            link.setAttribute("width", document.getElementById("wbsDrawingField").getBoundingClientRect().width)
+            field.appendChild(link)
+            /**
+             var draggableElement = event.relatedTarget, dropzoneElement = event.target
+             var id = draggableElement.id
+             var txt = draggableElement.innerHTML
+             */
+            var context = link.getContext('2d')
+            context.moveTo(Number(x1) + (Number(document.getElementById(action1).getBoundingClientRect().width)/2), Number(y1) + (Number(document.getElementById(action1).getBoundingClientRect().height)/2))
+            context.lineTo(Number(x2) + (Number(document.getElementById(action2).getBoundingClientRect().width)/2), Number(y2) + (Number(document.getElementById(action2).getBoundingClientRect().height)/2))
+            context.stroke()
+        }
+        
+    }
+    
+    
     function dragMoveListener (event) {
         var target = event.target
         // keep the dragged position in the data-x/data-y attributes
@@ -30,6 +107,7 @@ jQuery(document).ready( () => {
         // update the posiion attributes
         target.setAttribute('data-x', x)
         target.setAttribute('data-y', y)
+        refreshLinksXY()
     }
 
     $('#generate_button').on('click', function(e) {
@@ -96,9 +174,31 @@ jQuery(document).ready( () => {
         },
         ondrop: function (event) {
             var draggableElement = event.relatedTarget, dropzoneElement = event.target
-          
-            dropzoneElement.classList.add('drop-target')
+            var id = draggableElement.id
+            var txt = draggableElement.innerHTML
+            draggableElement.parentNode.removeChild(draggableElement)
+            draggableElement = document.createElement("div")
+            draggableElement.id = id 
+            draggableElement.innerHTML = txt
+            $(draggableElement).css({'position' : 'absolute'})
             draggableElement.classList.add('dropped')
+            document.getElementById("wbsDrawingField").appendChild(draggableElement)
+
+            
+
+
+            /**
+        selected_action = document.getElementById("select_tag").value
+        anchor = document.getElementById("spawn_anchor")
+        var action_holder = document.createElement("div")
+        action_id = action_id + 1
+        action_holder.id = 'action-'+action_id
+        $(action_holder).css({ 'position' : 'absolute'})
+        action_holder.classList.add('draggable')
+        action_holder.innerHTML = selected_action
+        anchor.appendChild(action_holder) */
+            
+            dropzoneElement.classList.add('drop-target')
             draggableElement.classList.remove('draggable')
             interact('.dropped').draggable({
         
@@ -146,73 +246,8 @@ jQuery(document).ready( () => {
 
             //treatment methods
 
-            function renderLink(){
-                var selected = document.getElementsByClassName("selected")
 
-                if (selected.length == 2){
-                    var link_container = document.createElement("svg")
-                    var link_line = document.createElement("line")
-                    var link_spawn = document.getElementById("spawn_anchor")
-                    var link_id = "link-"
-                    
-                    for (i = 0; i<selected.length ; i++){
-                        link_id += selected[i].id.substr(7)
-                        link_id += "|"
-                    }
-                    link_container.id =link_id
-                    link_container.classList.add("link")
-                    link_spawn.appendChild(link_container)
-                    link_container.appendChild(link_line)
-                }
-            }
-
-            function refreshLinksXY(){
-                var links = document.getElementsByClassName("link")
-                for(i = 0; i<links.length; i++){
-                    var action1 = "action-", action2 = "action-"
-                    var link_id = links[i].id.substr(5)
-                    console.log(link_id)
-                    var nextaction = false
-                    var charCounter = 0
-                    while( link_id.substr(charCounter, charCounter+1) ){
-                        if(link_id.substr(charCounter, charCounter+1) == "|"){
-                            nextaction = true;
-                            charCounter++
-                        }
-                        switch(nextaction){
-                            case false :
-                                action1 += link_id.substr(charCounter, charCounter+1)
-                                console.log("true"+link_id.substr(charCounter, charCounter+1))
-                                break;
-                            case true :
-                                action2 += link_id.substr(charCounter, charCounter+1)
-                                console.log("false"+link_id.substr(charCounter, charCounter+1))
-                                break;
-                        }
-                        charCounter++
-                    }
-                    console.log("1" + action1)
-                    console.log("2" +action2)
-                }
-
-                /*$('svg.link').each(function(){
-                    var $link = $(this)
-                    var linkId = $link.id
-                    var action1 = document.getElementById("action-"+linkId.substr(5))
-                    var action2 = document.getElementById("action-"+linkId.substr(6))
-                    var x1, x2, y2, y1
-                    x1 = Number(action1.getAttribute("data-x"))
-                    y1 = Number(action1.getAttribute("data-y"))
-                    x2 = Number(action2.getAttribute("data-x"))
-                    y2 = Number(action2.getAttribute("data-y"))
-                    console.log("x1:" + x1 + " y1:" + y1 +" x2:" + x2 + " y2:" + y2 )
-                    var dim1 = x1 - x2 
-                    var dim2 = y1 - y2
-                    console.log("dim1:" + dim1 +" dim2" + dim2)
-                    
-                    
-                })*/
-            }
+            
 
             function changeColor(value){
                 switch(value) {
@@ -266,7 +301,7 @@ jQuery(document).ready( () => {
             }
             
             $('#wbsDrawingField').on('click', function(e) {
-                clearSelected()
+                //clearSelected()
             })
 
 
