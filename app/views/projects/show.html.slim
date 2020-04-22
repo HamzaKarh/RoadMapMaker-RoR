@@ -54,11 +54,11 @@
           h1 Problèmes
         
         .Table-Problem
-          table.display-table
+          table#tb1.display-table
             tbody.oui
                 - @project.problems.each do |problem|
                   tr
-                    td.gauche = problem.name
+                    td.gauche1 onclick = "Popup()" = problem.name
                     td.droite 
                       = link_to image_tag("plusnoir.png", size: "25x25"), new_project_problem_counteraction_path(@project, problem), :method => :get
                       = link_to image_tag("editnoir.png", size: "25x25"), edit_project_problem_path(@project,  problem), :method => :get
