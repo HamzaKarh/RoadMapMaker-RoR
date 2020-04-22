@@ -3,26 +3,22 @@
         .icon
           =< link_to image_tag("return.png", size: "40x40"), project_path(@project), :method => :get
         h1 Liste des Feuilles de Routes
-    .Boxing
-      table
-        thead
-          tr
-            th Name
-            th Project
-            th
-            th
-            th
+        #plus = link_to image_tag("plus.png", size: "40x40"), new_project_wb_path(@project)
 
-        tbody
-          - @wbs.each do |wb|
-            tr
-              td = wb.name
-              td = wb.project.name
-              td = link_to 'Show', project_wb_path(@project, wb)
-              td = link_to 'Edit', edit_project_wb_path(@project, wb)
-              td = link_to 'Destroy', [@project,wb], data: { confirm: 'Are you sure?' }, method: :delete
-              td = link_to 'Draw', project_wb_draw_path(@project, wb)
+    #BoiteInter
+      #BoiteWBS
+        #Boite2
+          table
+            tbody
+              - @wbs.each do |wb|
+                tr
+                  td.gauche = wb.name
+                  td.droite 
+                    = link_to image_tag("editnoir.png", size: "25x25"), edit_project_wb_path(@project, wb)
+                    = link_to image_tag("blueprint.png", size: "25x25"), project_wb_draw_path(@project, wb)
+                    = link_to image_tag("deletenoir.png", size: "25x25"), [@project,wb], data: { confirm: 'Are you sure?' }, method: :delete
+                  
 
 
 
-      = link_to 'New Wb', new_project_wb_path(@project)
+      

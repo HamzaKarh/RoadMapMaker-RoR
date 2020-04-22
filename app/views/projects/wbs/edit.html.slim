@@ -1,6 +1,10 @@
-h1 Editing wb
+.Boxu
+    .Titre
+        .icon
+            = link_to image_tag("return.png", size: "40x40"), project_wbs_path(@project), :method => :get
+        h1 Edition Feuille de Route
 
-== render 'form'
+    == render 'form'
 
-=< link_to 'Back', project_wbs_path(@project)
+
 

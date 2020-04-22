@@ -2,6 +2,7 @@
     .Titre
         .icon
             = link_to image_tag("return.png", size: "40x40"), project_path(@project), :method => :get
+        
         h1 Modifier problème
 
     == render 'form'
