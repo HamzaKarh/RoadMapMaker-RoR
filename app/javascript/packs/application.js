@@ -39,11 +39,11 @@ jQuery(document).ready( () => {
     
     function refreshLinksXY(){
         var links = document.getElementsByTagName("canvas")
-        for(i = 0; i< links.length; i++){
+        for(u = 0; u< links.length; u++){
 
             //selecting the right actionbox
             var action1 = "action-", action2 = "action-"
-            var link_id = links[i].id.substr(5)
+            var link_id = links[u].id.substr(5)
             var charCounter = 0
             var index = 0
             for (i = 0; i<2 ; i++){

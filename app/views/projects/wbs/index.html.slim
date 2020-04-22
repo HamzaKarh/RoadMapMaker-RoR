@@ -1,25 +1,28 @@
-=< link_to image_tag("return.png", size: "40x40"), projects_path, :method => :get
-h1 Listing wbs
+.Boxu
+    .Titre
+        .icon
+          =< link_to image_tag("return.png", size: "40x40"), project_path(@project), :method => :get
+        h1 Liste des Feuilles de Routes
+    .Boxing
+      table
+        thead
+          tr
+            th Name
+            th Project
+            th
+            th
+            th
 
-table
-  thead
-    tr
-      th Name
-      th Project
-      th
-      th
-      th
+        tbody
+          - @wbs.each do |wb|
+            tr
+              td = wb.name
+              td = wb.project.name
+              td = link_to 'Show', project_wb_path(@project, wb)
+              td = link_to 'Edit', edit_project_wb_path(@project, wb)
+              td = link_to 'Destroy', [@project,wb], data: { confirm: 'Are you sure?' }, method: :delete
+              td = link_to 'Draw', project_wb_draw_path(@project, wb)
 
-  tbody
-    - @wbs.each do |wb|
-      tr
-        td = wb.name
-        td = wb.project.name
-        td = link_to 'Show', project_wb_path(@project, wb)
-        td = link_to 'Edit', edit_project_wb_path(@project, wb)
-        td = link_to 'Destroy', [@project,wb], data: { confirm: 'Are you sure?' }, method: :delete
-        td = link_to 'Draw', project_wb_draw_path(@project, wb)
 
-br
 
-= link_to 'New Wb', new_project_wb_path(@project)
+      = link_to 'New Wb', new_project_wb_path(@project)
