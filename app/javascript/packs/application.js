@@ -40,12 +40,10 @@ jQuery(document).ready( () => {
     function refreshLinksXY(){
         var links = document.getElementsByTagName("canvas")
         for(i = 0; i< links.length; i++){
-            console.log("test1")
 
             //selecting the right actionbox
             var action1 = "action-", action2 = "action-"
             var link_id = links[i].id.substr(5)
-            console.log(link_id)
             var charCounter = 0
             var index = 0
             for (i = 0; i<2 ; i++){
@@ -55,10 +53,8 @@ jQuery(document).ready( () => {
                 if(i == 0){
                     action1 += link_id.substr(index, charCounter)
                     index = charCounter + 1
-                    console.log("1 :" + action1)
                 }else if(i == 1){
                     action2 += link_id.substr(index, charCounter-2)
-                    console.log("2 :" + action2)
                 }
                 charCounter ++
             }
@@ -72,7 +68,6 @@ jQuery(document).ready( () => {
             //var height = Math.abs(Number(y1) - Number(y2))
             var link = document.getElementById("link-"+link_id)
             var tmpid = "link-"+link_id
-            console.log(link.id)
             field.removeChild(link)
             var link = document.createElement("canvas")
             link.id = tmpid
@@ -218,6 +213,7 @@ jQuery(document).ready( () => {
 
 
             $('.dropped').on('click', function(e) {
+                e.stopPropagation()
                 var selected = document.getElementsByClassName("selected") 
                 if (selected.length < 2){
                     val = document.getElementById(e.target.id)
@@ -250,49 +246,53 @@ jQuery(document).ready( () => {
             
 
             function changeColor(value){
+                var selected = document.getElementsByClassName("selected")
+
                 switch(value) {
                     case 'red':
-                        selected.forEach(function(value){
-                            var val = document.getElementById(value)
+                        for (i = 0; i<selected.length ; i++){
+
+                            var val = document.getElementById(selected[i].id)
                             val.classList.remove('green')
                             val.classList.remove('yellow')
                             val.classList.remove('blue')
                             val.classList.add('red')
-                        })
-                        clearSelect()
+                            }
+                            clearSelected()
                         break;
                     case 'blue':
-                        selected.forEach(function(value){
-                        var val = document.getElementById(value)
-                        val.classList.remove('green')
-                        val.classList.remove('yellow')
-                        val.classList.remove('red')
-                        val.classList.add('blue')
+                        for (i = 0; i<selected.length ; i++){
+                        
+                            var val = document.getElementById(selected[i].id)
+                            val.classList.remove('green')
+                            val.classList.remove('yellow')
+                            val.classList.remove('red')
+                            val.classList.add('blue')
 
-                    })
-                    clearSelect()
+                        }
+                        clearSelected()
 
                     break;
                     case 'green':
-                        selected.forEach(function(value){
-                        var val = document.getElementById(value)
-                        val.classList.remove('yellow')
-                        val.classList.remove('blue')
-                        val.classList.remove('red')
-                        val.classList.add('green')
-                    })
-                    clearSelect()
+                        for (i = 0; i<selected.length ; i++){
+                            var val = document.getElementById(selected[i].id)
+                            val.classList.remove('yellow')
+                            val.classList.remove('blue')
+                            val.classList.remove('red')
+                            val.classList.add('green')
+                        }
+                        clearSelected()
                     break;
                     case 'yellow':
-                        selected.forEach(function(value){
-                        var val = document.getElementById(value)
-                        val.classList.remove('green')
-                        val.classList.remove('blue')
-                        val.classList.remove('red')
-                        val.classList.add('yellow')
+                        for (i = 0; i<selected.length ; i++){
+                            var val = document.getElementById(selected[i].id)
+                            val.classList.remove('green')
+                            val.classList.remove('blue')
+                            val.classList.remove('red')
+                            val.classList.add('yellow')
                         
-                    })
-                    clearSelect()
+                        }
+                        clearSelected()
                     break;
                     
                     default:
@@ -301,7 +301,7 @@ jQuery(document).ready( () => {
             }
             
             $('#wbsDrawingField').on('click', function(e) {
-                //clearSelected()
+                clearSelected()
             })
 
 
