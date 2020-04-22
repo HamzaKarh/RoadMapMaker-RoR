@@ -1,0 +1,116 @@
+// Place all the styles related to the wbs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.drawingTool
+    display: inline-flex
+    width: 100%
+
+    .actionGeneration_Box
+        padding: 25px 10px 25px 10px
+        border: 4px solid #000000
+        border-radius: 10px
+        max-width: 20%
+        height: auto
+        flex-grow: 1
+        background-color: #bababa
+
+
+        #spawn_anchor
+            border-radius: 10px
+            background-color: #ffffff
+            margin: 20px 0px 20px 0px
+            border: 1px solid #bababa
+            height: 25%
+            width: 90%
+
+
+    .wbsDrawerContainer
+        background-color: #bababa
+
+        margin-right: 0px
+        margin-left: auto 
+        padding: 25px 10px 25px 10px
+        border: 4px solid #000000
+        border-radius: 10px
+        height: 800px
+        max-width: 75%
+        flex-grow: 4
+
+
+
+        #wbsDrawingField
+            background-color: #ffffff
+            border-radius: 10px
+            margin: 20px 0px 20px 0px
+            height: 90%
+
+.draggable
+    background-color: #261199
+    border-color: #261199
+    border-width: 5px
+    text-align: center
+    min-height: 4em
+    min-width: 2.5em
+    max-width: 4em
+    border-radius: 10px
+    padding-top: 10px  
+    padding-bottom: 10px  
+    padding-left: 10px  
+    padding-right: 10px  
+    color: white
+    
+
+    
+.dropped
+    background-color: #15b32f
+    border-width: 3px
+    border-color: #15b32f
+    text-align: center
+    min-height: 100px
+    min-width: 150px
+    max-width: 4em
+    border-radius: 10px
+    padding-top: 10px  
+    padding-bottom: 10px  
+    padding-left: 10px  
+    padding-right: 10px  
+    color: white
+    z-index: +2
+.red
+    background-color: #ff0000
+.green
+    background-color: #15ff00
+.blue
+    background-color: #1100ff
+.yellow
+    background-color: #d9ff00
+
+.selected
+    border-style: inset
+    border-color: #777777
+.colors
+    display: flex
+    .colorPalet
+        border-style: solid
+        border-radius: 10px
+        border-color: #777777
+        width: 20%
+        height: 40px
+        margin: auto
+    #red
+        background-color: #ff0000
+    #green
+        background-color: #15ff00
+    #blue
+        background-color: #1100ff
+    #yellow
+        background-color: #d9ff00
+        
+canvas
+    z-index: +1
+    position: absolute
+
+
+            
+            
+
