@@ -39,11 +39,11 @@ jQuery(document).ready( () => {
     
     function refreshLinksXY(){
         var links = document.getElementsByTagName("canvas")
-        for(u = 0; u< links.length; u++){
+        for(i = 0; i< links.length; i++){
 
             //selecting the right actionbox
             var action1 = "action-", action2 = "action-"
-            var link_id = links[u].id.substr(5)
+            var link_id = links[i].id.substr(5)
             var charCounter = 0
             var index = 0
             for (i = 0; i<2 ; i++){
@@ -73,6 +73,7 @@ jQuery(document).ready( () => {
             link.id = tmpid
             link.setAttribute("height", document.getElementById("wbsDrawingField").getBoundingClientRect().height)
             link.setAttribute("width", document.getElementById("wbsDrawingField").getBoundingClientRect().width)
+            link.setAttribute("style", "position:absolute")
             field.appendChild(link)
             /**
              var draggableElement = event.relatedTarget, dropzoneElement = event.target
@@ -188,7 +189,7 @@ jQuery(document).ready( () => {
         var action_holder = document.createElement("div")
         action_id = action_id + 1
         action_holder.id = 'action-'+action_id
-        $(action_holder).css({ 'position' : 'absolute'})
+        $(action_holder).css({ 'position' : 'relative'})
         action_holder.classList.add('draggable')
         action_holder.innerHTML = selected_action
         anchor.appendChild(action_holder) */
