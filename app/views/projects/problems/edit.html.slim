@@ -1,7 +1,11 @@
-h1 Modifier problème
+.Boxu
+    .Titre
+        .icon
+            = link_to image_tag("return.png", size: "40x40"), project_path(@project), :method => :get
+        
+        h1 Modifier problème
 
-== render 'form'
+    == render 'form'
 
 => button_to 'Afficher', [@project, @problem], :method => :get
-=< button_to 'Retour', project_problems_path(@project)
 

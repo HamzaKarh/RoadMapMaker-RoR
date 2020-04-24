@@ -2,7 +2,5 @@ h1 Editing counteraction
 
 == render 'form'
 
-=> button_to 'Show', [@project, @problem, @counteraction]
-'|
-=< button_to 'Back', project_problem_counteractions_path(@project, @problem)
+= link_to image_tag("return.png", size: "40x40"), project_path(@project), :method => :get
 

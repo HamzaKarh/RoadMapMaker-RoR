@@ -1,39 +1,60 @@
 - if user_signed_in?
 
-  = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
-  table.display-table
-    thead.table-header
-      tr.table-header--row
-        th.header-case Nom
-        th.header-case Nom Entreprise Cliente
-        th.header-case Nom Client
-        th.header-case Description
-        th.header-case
-        th.header-case
-        th.header-case
-        th.header-case
-        th.header-case
+  .Project
 
-    tbody
-        - @projects.each do |project|
-          tr
-            td = project.name
-            td = project.client_company_name
-            td = project.client_name
-            td = project.description
-            td = button_to 'Show', project, :method => :get
-            td = button_to 'Edit', edit_project_path(project), :method => :get
-            td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
-            td = button_to 'Show WBS list', project_wbs_path(project.id), :method => :get
-            
+    .Titre
+      h1 Projets
+    .Colonne
 
-        br
-        = link_to 'Nouveau projet', new_project_path 
+      .CidProject
+        .Box
+          image
+            = image_tag "CID.png"
+          bouton
+            newprojet
+              = link_to "Nouveau Projet", new_project_path
+            Quitter
+              = link_to "Quitter", destroy_user_session_path, :method => :delete 
+
+      
+      .TableIndex
+        table.display-table
+          tbody.oui
+              - @projects.each do |project|
+                tr
+                  td = link_to project.name, project
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+
+              
+          
 
 
 
 - else
 
   meta content=("0; url= /user/sign_in") http-equiv="Refresh" /
+
+
 
 

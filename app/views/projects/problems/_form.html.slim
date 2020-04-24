@@ -1,16 +1,20 @@
-= form_for [@project, @problem] do |f|
-  - if @problem.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@problem.errors.count, "error")} Interdits ce problème d'être sauvegardé:"
-      ul
-        - @problem.errors.full_messages.each do |message|
-          li = message
-  br  
-  .field
-    = f.text_field :name, placeholder: "Nom du probleme"
-  br
-  .field
-    = f.text_area :description, placeholder: "Description"
-  br
+.Boxing
+  = form_for [@project, @problem] do |f|
+    - if @problem.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@problem.errors.count, "error")} Interdits ce problème d'être sauvegardé:"
+        ul
+          - @problem.errors.full_messages.each do |message|
+            li = message
+    
+    .LaBoite
+      .field
+        h2 Nom du Problème :
+        = f.text_field :name, placeholder: "Nom du probleme"
+      
+      .field
+        h2 Description :
+        = f.text_area :description, placeholder: "Description"
+      
 
-  .actions = f.submit
+      .actions = f.submit "Submit", :type => :image, :src => image_path("addfile.png") , width: "40", height: "40"

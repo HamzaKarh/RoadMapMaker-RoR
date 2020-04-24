@@ -1,33 +1,48 @@
-.actionGenerator
-    #actionSelector= select_tag "Action",
-     options_from_collection_for_select(@counteractions, 'name', 'name', params[:id]),{id: 'select_tag'}
-    button#generate_button Generate 
+.Boxu
+    .Titre
+        .icon
+            = link_to image_tag("return.png", size: "40x40"), project_wbs_path(@project), :method => :get
+        h1 Feuille de Route
 
 
+    .drawingTool
 
 
-.drawingTool
-    .actionGeneration_Box
-        |Spawn Anchor
-        #spawn_anchor
-        button#link_action_button Link 
-
-        .colors
-            #red.colorPalet
-            #green.colorPalet
-            #blue.colorPalet
-            #yellow.colorPalet
+        .wbsDrawerContainer
+            #wbsDrawingField
 
             
 
+            #truc
+                p 1
+
+        .actionGeneration_Box
+            .Colonne
+                .BoiteGauche
+                    .actionGenerator
+                        #actionSelector= select_tag "Action",
+                        options_from_collection_for_select(@counteractions, 'name', 'name', params[:id]),{id: 'select_tag'}
+                        button#generate_button Créer une boite       
+                    .Spawn
+
+                        #spawn_anchor
+
+                .BoiteDroite
+                    Button#link_action_button link
+
+                    .colors
+                        #red.colorPalet
+                        #green.colorPalet
+                        #blue.colorPalet
+                        #yellow.colorPalet
+
+                
 
 
 
-    .wbsDrawerContainer
-        | Drawing field
-        #wbsDrawingField
+
+                
 
 
-
-//      svg height="50" width="50" 
-//            circle cx="25" cy="25" fill="purple" r="25" 
+    //      svg height="50" width="50" 
+    //            circle cx="25" cy="25" fill="purple" r="25" 
