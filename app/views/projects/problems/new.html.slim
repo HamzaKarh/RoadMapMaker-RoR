@@ -1,5 +1,9 @@
-h1 Nouveau problème
+.Boxu
+    .Titre
+        .icon
+            = link_to image_tag("return.png", size: "40x40"), project_path(@project), :method => :get
+        h1 Nouveau problème
 
-== render 'form'
+    == render 'form'
+    
 
-= button_to 'Retour', project_problems_path(@project)

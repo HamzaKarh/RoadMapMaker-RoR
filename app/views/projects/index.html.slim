@@ -1,4 +1,5 @@
 - if user_signed_in?
+<<<<<<< HEAD
   = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
   table.display-table
     thead.table-header
@@ -30,6 +31,57 @@
 
         br
         = link_to 'Nouveau projet', new_project_path 
+=======
+
+  .Project
+
+    .Titre
+      h1 Projets
+    .Colonne
+
+      .CidProject
+        .Box
+          image
+            = image_tag "CID.png"
+          bouton
+            newprojet
+              = link_to "Nouveau Projet", new_project_path
+            Quitter
+              = link_to "Quitter", destroy_user_session_path, :method => :delete 
+
+      
+      .TableIndex
+        table.display-table
+          tbody.oui
+              - @projects.each do |project|
+                tr
+                  td = link_to project.name, project
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+              tr
+                td.hide .
+
+              
+          
+>>>>>>> 0e5f279cfde961a6f95802a004ffbde17db32fd1
 
 
 
@@ -37,4 +89,6 @@
 
 
   meta content=("0; url= /user/sign_in") http-equiv="Refresh" /
+
+
 

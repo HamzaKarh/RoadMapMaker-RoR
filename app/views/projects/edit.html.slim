@@ -1,8 +1,7 @@
 .NewEditbox
-    h1 Edition du Projet
+    .Titre
+        .icon
+            = link_to image_tag("return.png", size: "40x40"), project_path, :method => :get
+        h1 Edition du Projet
 
     == render 'form'
-
-=> button_to 'Show', @project, :method => :get
-'|
-=< button_to 'Back', projects_path

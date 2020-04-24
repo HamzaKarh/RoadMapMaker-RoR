@@ -1,4 +1,7 @@
 .NewEditbox
-    h1 Nouveau Projet
+    .Titre
+        .icon
+            =< link_to image_tag("return.png", size: "40x40"), projects_path, :method => :get
+        h1 Nouveau Projet
 
     == render 'form'

@@ -1,20 +1,17 @@
-= form_with(model: [@counteraction.problem.project, @counteraction.problem, @counteraction])do |f|
-  - if @counteraction.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@counteraction.errors.count, "error")} prohibited this counteraction from being saved:"
-      ul
-        - @counteraction.errors.full_messages.each do |message|
-          li = message
+.Boxing
+  = form_for [@project, @problem, @counteraction] do |f|
+    - if @counteraction.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@counteraction.errors.count, "error")} prohibited this counteraction from being saved:"
+        ul
+          - @counteraction.errors.full_messages.each do |message|
+            li = message
 
-
-  .field
-    = f.label :name
-    = f.text_field :name
-
-  .field
-    = f.label :description
-    = f.text_area :description
-
-
-  .actions = f.submit
-
+    .LaBoite
+      .field
+        h2 Nom de l'Action
+        = f.text_field :name
+      .field
+        h2 Description
+        = f.text_area :description
+      .actions = f.submit "Submit", :type => :image, :src => image_path("addfile.png") , width: "40", height: "40"
