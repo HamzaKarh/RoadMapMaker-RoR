@@ -1,34 +1,37 @@
-p#notice = notice
+.Boxu
+    .Titre
+        .icon
+            =< link_to image_tag("return.png", size: "40x40"), project_wbs_path(@project), :method => :get
+            => link_to image_tag("delete.png", size: "40x40"), edit_project_wb_path(@project, @wb), :method => :get
+            => link_to image_tag("blueprintwhite", size: "40x40"), project_wb_draw_path(@project,@wb), :method => :get
+        h1 Résumé Feuille de Route
+    .Boxing
+      .Boite2
+        .LaBoite2
+            h2#notice = notice
 
-p
-  strong Name:
-  = @wb.name
-  br 
-  br
-  br
-p
-  strong Project:
-  br
-  strong Name:
-  
-  = @project.name
-  br
-  strong Client name:
-  
-  = @project.client_name
-  br
-  strong Client company name:
-  
-  = @project.client_company_name
-  br
-  strong Description:
-  
-  = @project.description
-  br 
-
-=> button_to 'Draw', project_wb_draw_path(@project,@wb), :method => :get
+            .field1
+            h2 Nom de la Feuille de Route: 
+            h2 = @wb.name
+            .field1
+            h2 Nom du Projet: 
+            h2 = @project.name
+            .field1
+            h2 Client name: 
+            h2 = @project.client_name
+            .field1
+            h2 Client company name: 
+            h2 = @project.client_company_name
+            .field1
+            h2 Description: 
+            h2 = @project.description
 
 
-=> button_to 'Edit', edit_project_wb_path(@project, @wb)
 
-=< button_to 'Back', project_wbs_path(@project)
+
+
+
+
+
+
+

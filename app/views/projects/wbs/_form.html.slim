@@ -1,12 +1,13 @@
-= form_for [@project, @wb] do |f|
-  - if @wb.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@wb.errors.count, "error")} prohibited this wb from being saved:"
-      ul
-        - @wb.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions = f.submit
+.Boxing
+  = form_for [@project, @wb] do |f|
+    - if @wb.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@wb.errors.count, "error")} prohibited this wb from being saved:"
+        ul
+          - @wb.errors.full_messages.each do |message|
+            li = message
+    .LaBoite
+      .field
+        h2 Nom de la Feuille de Route
+        = f.text_field :name
+      .actions = f.submit "Submit", :type => :image, :src => image_path("addfile.png") , width: "40", height: "40"

@@ -1,32 +1,42 @@
-= form_for [@project] do |f|
-  - if @project.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@project.errors.count, "error")} a interdit ce projet d'être sauvegardé:"
-      ul
-        - @project.errors.full_messages.each do |message|
-          li = message
+.Boxing
+  = form_for [@project] do |f|
+    - if @project.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@project.errors.count, "error")} a interdit ce projet d'être sauvegardé:"
+        ul
+          - @project.errors.full_messages.each do |message|
+            li = message
 
-  .field
-    = f.text_field :name, placeholder: "Nom du projet"
 
-  .field
-    = f.text_field :client_company_name, placeholder: "Nom de l'entreprise"
-  .field
-    = f.text_field :client_name, placeholder: "Nom du Client"
-  br
-  .field
-    = f.text_area :description, placeholder: "Description"
-  br
-  .field
-    = f.text_area :team, placeholder: "Equipe du projet"
-  br
-  .field
-    = f.text_area :extworkforce, placeholder: "Personnel impliqué"
-  br
-  .field
-    = f.text_area :deliverable, placeholder: "Livrables"
-  br
-  .field
-    = f.text_field :budget, placeholder: "Budget"
 
-  .actions = f.submit
+    .colonne
+      .boxgauche
+        
+        .field
+          h2 Nom du projet :
+          = f.text_field :name, placeholder: "Nom du projet"
+        .field
+          h2 Nom de l'entreprise :
+          = f.text_field :client_company_name, placeholder: "Nom de l'entreprise"
+        .field
+          h2 Nom du Client :
+          = f.text_field :client_name, placeholder: "Nom du Client"
+        .field
+          h2 Description :
+          = f.text_area :description, placeholder: "Description"
+
+      .boxdroite
+        .field
+          h2 Equipe du projet :
+          = f.text_area :team, placeholder: "Equipe du projet"
+        .field
+          h2 Personnel impliqué :
+          = f.text_area :extworkforce, placeholder: "Personnel impliqué"
+        .field
+          h2 Livrables :
+          = f.text_area :deliverable, placeholder: "Livrables"
+        .field
+          h2 Budget :
+          = f.text_field :budget, placeholder: "Budget"
+
+        .actions = f.submit "Submit", :type => :image, :src => image_path("addfile.png") , width: "40", height: "40"

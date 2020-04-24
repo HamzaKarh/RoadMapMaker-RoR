@@ -2,98 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.Latable
-    //background
-    background: #ffffff
+.Menu
+    background: #3b3b3b
+    max-width: 100%
+    min-height: 100%
+    height: 100%
+    min-height: 100%
 
-    //position
-    position: absolute
-    top: 25%
-    left: 50%
-    transform: translate(-50%, -50%)
-
-    //font
-    color: #212529
-    font-family: sans-serif
-    overflow: false
-    font-size: 1rem
-
-    //taille
-
-
-    //Shape
-    border-radius: 20px
-    font-weight: 400
-
-
-//#36304a
-
-table
-    border-collapse: collapse
-    border-radius: 15px
-    overflow: hidden
-    width: 100%
-    margin: 0 auto
-    position: relative
-    background: #ffffff
-
-.Latable table thead
-    height: 60px
-    background: #36304a
-    color: #ffffff
-    text-align: center
-
-.Latable th
-    padding-left: 20px
-    padding-right: 20px
-    text-align: center
-
-.Latable td
-
-    padding-block: 15px
-    text-align: center
-   
-
-
-    input[type="submit"]
-
-        
-        border-style: hidden
-        font-size: 0.75rem
-        padding-top: 10px
-        padding-bottom: 10px
-        padding-right: 15px
-        padding-left: 15px
-        background-color: #4159d0de
-        -webkit-box-shadow: 0 10px 30px 0px #4159d096
+    .Title
+        display: flex
+        align-items: center
+        text-align: center
         color: white
-      
-
-    input[type="submit"]:hover
-        background-color: #4158d0
+        background: #3b3b3b
 
 
-.Latable tr.table-header--row:hover    
-    background: #36304a
+        .Title h1
+            margin: 0px
+            padding: 1.5%
 
-.Latable tbody tr:nth-child(odd)
-    background: #ffffff
+        .icon
+            margin-left: 5%
+            display: flex
+            justify-content: space-between
+            width: 20%
+            z-index: 10
+                
+        .titre
+            margin-left: -22%
+            flex-grow: 5
+        
+        .icondroit
+            margin-right: 2%
 
-.Latable tbody tr:nth-child(even)
-    background: #dddddd93
+    .TableProjet
+            overflow: scroll
+            table-layout: fixed
+            height: 100%
+            position: relative
+
+        table.display-table
+            min-width: 100%
+            border-collapse: collapse
+
+        tbody
+
+            td
+                padding: 1%
+                font-size: 1.5rem
+            
+            td.gauche
+                text-align: center
+                background: #5f5c5c
+                color: white
+            td.droite
+                max-width: 70%
+                min-width: 70%
+                background: #ffffff
+                border-bottom-style: solid
+                border-bottom-color: #bdbdbd
+                border-bottom-width: 1px
 
 
-.Latable tbody tr:hover
-    background: #adadad85
-
-.Latable
-    a
-        color: #5892ff
-        text-decoration: none
-        moz-transition: all .4s
-    a:hover
-        color: #0077ffb2
-    
 .LeBoutontable
     
     input[type="submit"]
@@ -112,72 +82,155 @@ table
 
 
 //Show apres index
-.TableProjet
-    //background
-    background: #ffffff
+.BoxProbleme
+    max-width: 100%
+    min-height: 100%
+    height: 100%
+    background: #5f5c5c
 
-    //position
+    .Title
+        .titre
+            margin-left: 0%
 
-    //font
-    color: #212529
-    font-family: sans-serif
-    overflow: false
-    font-size: 1rem
-
-    //taille
-
-
-    //Shape
-    border-radius: 20px
-    font-weight: 400
-
-    table
-        border-collapse: collapse
-        border-radius: 15px
-        overflow: hidden
-        width: 100%
-        margin: 0 auto
+    .Colonne
+        overflow:auto
         position: relative
-        background: #ffffff
+        height: 80%
+        min-height: 100%
+        column-span: all
+        column-count: 2
 
-        thead
-            tr 
-                border-bottom-style: solid
-                border-color: #2d273d
+        .problem-box
+            position: relative
+            height: 100%
+            max-height: 80%
+            
+            titre
 
+                margin: 0%
+                display: flex
+                color: white
+
+                icon
+                    margin-top: 3%
+                    margin-left: 30%
+
+                h1
+                    margin: 0%
+                    margin-top: 3%
+                    margin-left: 5%
+                    margin-bottom: 3%
+
+            
+            .Table-Problem
+                overflow: scroll
+                position: relative
+                table-layout: fixed
+                margin-left: auto
+                margin-right: auto
+                max-height: 80%
+                width: 90%
+                align-items: center
+                background: white
+                height: 80%
+                
+                
+                table#tb1.display-table
+                    word-wrap: break-word
+                    width: 100%
+                    max-width: 100%
+                    border-collapse: collapse
+                    table-layout: fixed
+
+                    td
+                        overflow-wrap: break-word
+                        width: 90%
+                        padding: 10px
+                        padding-left: 20px
+                        font-size: 1.2rem
+
+                    
+                    td.gauche1
+                        width: 80%
+                        border-bottom-style: solid
+                        border-bottom-color: #bdbdbd
+                        border-bottom-width: 1px
+                    td.droite
+                        display: flex
+                        text-align: right
+                        justify-content: space-between
+                        
+                
         
-        th
-            padding-block: 15px
-            padding-left: 40px
-            padding-right: 40px
-            text-align: center
-
-        td
-            padding-left: 40px
-            padding-right: 40px
-            padding-block: 15px 
-            text-align: center
-
-        th:nth-child(odd)
-            color: #ffffff
-            background: #36304a
-
-
-        td:nth-child(odd)
-            color: #ffffff
-            background: #36304a
-
-.problem-box
-    display: inline-flex
-    flex-flow: row wrap
-    .problem-container
-        width: 20%
-        margin: 2.5%
         .action-box
-            text-align: center
-            display: inline-flex
+            position: relative
+            height: 80%
+            
+            
+            titre
 
-            .action-container
+                display: flex
+                color: white
+
+                h1
+                    margin: 3%
+                    margin-left: 35%
+
+            .Table-Action
+                overflow: scroll
+                position: relative
+                table-layout: fixed
+                margin-left: auto
+                margin-right: auto
+                max-height: 80%
+                width: 90%
+                align-items: center
+                background: white
+                height: 80%
+                
+                
+                
+                table.display-table
+                    word-wrap: break-word
+                    width: 100%
+                    max-width: 100%
+                    border-collapse: collapse
+                    table-layout: fixed
+
+                    td
+                        overflow-wrap: break-word
+                        width: 90%
+                        padding: 10px
+                        padding-left: 20px
+                        font-size: 1.2rem
+
+                    
+                    td.gauche
+                        width: 80%
+                        border-bottom-style: solid
+                        border-bottom-color: #bdbdbd
+                        border-bottom-width: 1px
+                    td.droite
+                        display: flex
+                        text-align: right
+                        justify-content: space-between
+                            
+                
+
+
+
+
+// .problem-box
+//     display: inline-flex
+//     flex-flow: row wrap
+//     .problem-container
+//         width: 20%
+//         margin: 2.5%
+//         .action-box
+//             text-align: center
+//             display: inline-flex
+
+//             .action-container
 
 
   
