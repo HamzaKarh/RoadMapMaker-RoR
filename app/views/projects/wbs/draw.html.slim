@@ -7,33 +7,40 @@
 
     .drawingTool
 
+
+        .wbsDrawerContainer
+            #wbsDrawingField
+
+            
+
+            #truc
+                p 1
+
         .actionGeneration_Box
-            .actionGenerator
-                #actionSelector= select_tag "Action",
-                options_from_collection_for_select(@counteractions, 'name', 'name', params[:id]),{id: 'select_tag'}
-                button#generate_button Generate       
+            .Colonne
+                .BoiteGauche
+                    .actionGenerator
+                        #actionSelector= select_tag "Action",
+                        options_from_collection_for_select(@counteractions, 'name', 'name', params[:id]),{id: 'select_tag'}
+                        button#generate_button Generate       
+                    .Spawn
 
-            |Spawn Anchor
-            #spawn_anchor
-            button#link_action_button Link 
+                        #spawn_anchor
 
-            .colors
-                #red.colorPalet
-                #green.colorPalet
-                #blue.colorPalet
-                #yellow.colorPalet
+                .BoiteDroite
+                    button#link_action_button Link
+
+                    .colors
+                        #red.colorPalet
+                        #green.colorPalet
+                        #blue.colorPalet
+                        #yellow.colorPalet
 
                 
 
 
 
 
-        .wbsDrawerContainer
-            #wbsDrawingField
-            
-
-            #truc
-                p 1
                 
 
 

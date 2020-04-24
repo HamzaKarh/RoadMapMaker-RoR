@@ -2,38 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .drawingTool
-    display: inline-flex
     width: 100%
+    height: 100%
+    #select_tag
+        width: 60%
+        font-size: 1rem
+        background-color: #414141
+        padding: 1%
+        Border: none
+        color: white
 
+    .actionGenerator
+        width: 50%
+        
     .actionGeneration_Box
-        padding: 25px 10px 25px 10px
+        padding: 2%
         border: 4px solid #000000
         border-radius: 10px
-        max-width: 20%
+        width: 100%
         height: auto
         flex-grow: 1
         background-color: #bababa
 
+        .Colonne
+            overflow:auto
+            position: relative
+            height: 80%
+            min-height: 100%
+            column-span: all
+            column-count: 2
+            
+        .BoiteGauche
+            display: flex
+            
 
-        #spawn_anchor
-            border-radius: 10px
-            background-color: #ffffff
-            margin: 20px 0px 20px 0px
-            border: 1px solid #bababa
-            height: 25%
-            width: 90%
+            .Spawn 
+                position: relative
+                width: 100%
+                height: 100%
+                z-index: 99
 
+                #spawn_anchor
+                    position: relative
+                    border-radius: 10px
+                    background-color: #ffffff
+                    border: 1px solid #bababa
+                    height: 70px
+                    width: 30%
+        
+        .BoiteDroite
+
+            
 
     .wbsDrawerContainer
         background-color: #bababa
 
         margin-right: 0px
         margin-left: auto 
-        padding: 25px 10px 25px 10px
+
         border: 4px solid #000000
         border-radius: 10px
-        height: 800px
-        max-width: 75%
+        height: 75%
+        max-width: 100%
         flex-grow: 4
         overflow-y: scroll
 
@@ -41,8 +71,7 @@
         #wbsDrawingField
             background-color: #ffffff
             border-radius: 10px
-            margin: 20px 0px 20px 0px
-            height: 400%
+            height: 800%
             position: relative
         #truc
             margin-top: 150%
@@ -58,33 +87,24 @@
     border-color: #261199
     border-width: 5px
     text-align: center
-    min-height: 4em
-    min-width: 2.5em
-    max-width: 4em
-    border-radius: 10px
-    padding-top: 10px  
-    padding-bottom: 10px  
-    padding-left: 10px  
-    padding-right: 10px  
+    height: 100%
+    width: 100%
     color: white
+    border-radius: 10px
+    
     
 
     
 .dropped
-    background-color: #15b32f
+    background-color: #bababa
     border-width: 3px
     border-color: #15b32f
     text-align: center
-    min-height: 100px
-    min-width: 150px
-    max-width: 4em
-    border-radius: 10px
-    padding-top: 10px  
-    padding-bottom: 10px  
-    padding-left: 10px  
-    padding-right: 10px  
+    height: 2%
+    width: 10%
     color: white
     z-index: +2
+    border-radius: 10px
 .red
     background-color: #ff0000
 .green
@@ -103,9 +123,8 @@
         border-style: solid
         border-radius: 10px
         border-color: #777777
-        width: 20%
+        width: 10%
         height: 40px
-        margin: auto
     #red
         background-color: #ff0000
     #green
