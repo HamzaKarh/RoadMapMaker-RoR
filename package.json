@@ -1,5 +1,5 @@
 {
-  "name": "RoadMapMaker",
+  "name": "roadmapmaker",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
@@ -14,5 +14,24 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "babel.config.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/MoltenMane/roadmapmaker.git"
+  },
+  "author": "Hamza Karhat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/MoltenMane/roadmapmaker/issues"
+  },
+  "homepage": "https://gitlab.com/MoltenMane/roadmapmaker#readme"
 }
