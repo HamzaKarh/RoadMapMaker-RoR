@@ -11,6 +11,8 @@
         padding: 1%
         Border: none
         color: white
+        overflow: scroll
+        
 
     .actionGenerator
         width: 50%
@@ -52,6 +54,7 @@
         
         .BoiteDroite
 
+
             
 
     .wbsDrawerContainer
@@ -86,7 +89,9 @@
     background-color: #261199
     border-color: #261199
     border-width: 5px
-    text-align: center
+    display: flex
+    align-items: center
+    justify-content: center
     height: 100%
     width: 100%
     color: white
@@ -99,20 +104,24 @@
     background-color: #bababa
     border-width: 3px
     border-color: #15b32f
-    text-align: center
-    height: 2%
+    height: 1.5%
     width: 10%
     color: white
     z-index: +2
     border-radius: 10px
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 1.2rem
+
 .red
     background-color: #ff0000
 .green
-    background-color: #15ff00
+    background-color: #29c81a
 .blue
     background-color: #1100ff
 .yellow
-    background-color: #d9ff00
+    background-color: #cbeb18
 
 .selected
     border-style: inset
@@ -128,11 +137,11 @@
     #red
         background-color: #ff0000
     #green
-        background-color: #15ff00
+        background-color: #29c81a
     #blue
         background-color: #1100ff
     #yellow
-        background-color: #d9ff00
+        background-color: #cbeb18
         
 canvas
     z-index: +1
