@@ -1,4 +1,4 @@
-= form_with(model: [@wb.project, @wb] ) do |f|
+= form_for [@project, @wb] do |f|
   - if @wb.errors.any?
     #error_explanation
       h2 = "#{pluralize(@wb.errors.count, "error")} prohibited this wb from being saved:"

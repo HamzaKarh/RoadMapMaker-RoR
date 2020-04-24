@@ -1,22 +1,32 @@
-= form_for @project, url: { controller: 'projects', action: 'create' } do |f|
+= form_for [@project] do |f|
   - if @project.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@project.errors.count, "error")} Interdire ce projet d'être sauvegardé:"
+      h2 = "#{pluralize(@project.errors.count, "error")} a interdit ce projet d'être sauvegardé:"
       ul
         - @project.errors.full_messages.each do |message|
           li = message
 
   .field
-    
     = f.text_field :name, placeholder: "Nom du projet"
-  br
+
   .field
     = f.text_field :client_company_name, placeholder: "Nom de l'entreprise"
-  br
   .field
     = f.text_field :client_name, placeholder: "Nom du Client"
   br
   .field
     = f.text_area :description, placeholder: "Description"
   br
+  .field
+    = f.text_area :team, placeholder: "Equipe du projet"
+  br
+  .field
+    = f.text_area :extworkforce, placeholder: "Personnel impliqué"
+  br
+  .field
+    = f.text_area :deliverable, placeholder: "Livrables"
+  br
+  .field
+    = f.text_field :budget, placeholder: "Budget"
+
   .actions = f.submit

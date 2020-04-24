@@ -33,7 +33,6 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user = current_user
 
-
 		if @project.save
 			return redirect_to()
 		else
@@ -46,7 +45,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Le projet a été mis à jour.' }
+        format.html { redirect_to @project, notice: 'Le projet a été mis à jour.'}
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -69,11 +68,11 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = current_user.projects
+      @project = Project.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :client_company_name, :client_name, :description, :user)
+      params.require(:project).permit(:name, :client_company_name, :client_name, :description, :team, :deliverable, :budget, :extworkforce)
     end
 end
