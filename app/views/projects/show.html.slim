@@ -40,28 +40,6 @@
           td.droite = @project.budget
 
   
-<<<<<<< HEAD
-  br
-  - @project.problems.each do |problem|
-    p
-      Strong Name: 
-      = problem.name
-    p
-      Strong Description:
-      = problem.description
-      br
-    
-    p
-      td = button_to 'Edit', edit_project_problem_path(@project,  problem), :method => :get
-      td = button_to 'Show problem', [@project, problem], :method => :get
-      td = button_to 'Delete', [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
-      td = button_to 'Add counteraction', new_project_problem_counteraction_path(@project, problem), :method => :get
-
-=> button_to 'Edit', edit_project_path(@project), :method => :get
-
-
-=< button_to 'Back', projects_path
-=======
   .BoxProbleme
     .Title
       .titre
@@ -137,5 +115,4 @@
 
 
 
->>>>>>> 0e5f279cfde961a6f95802a004ffbde17db32fd1
 

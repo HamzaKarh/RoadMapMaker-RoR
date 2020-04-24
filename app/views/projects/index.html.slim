@@ -1,37 +1,4 @@
 - if user_signed_in?
-<<<<<<< HEAD
-  = button_to "Déconnecter", destroy_user_session_path, :method => :delete 
-  table.display-table
-    thead.table-header
-      tr.table-header--row
-        th.header-case Nom
-        th.header-case Nom Entreprise Cliente
-        th.header-case Nom Client
-        th.header-case Description
-        th.header-case
-        th.header-case
-        th.header-case
-        th.header-case
-        th.header-case
-
-    tbody
-        - @projects.each do |project|
-          tr
-            td = project.name
-            td = project.client_company_name
-            td = project.client_name
-            td = project.description
-            td = button_to 'Show', project, :method => :get
-            td = button_to 'Edit', edit_project_path(project), :method => :get
-            td = button_to 'Delete', project, :method => :delete, :onclick => "return confirm('Are you sure you want to delete this project?')" 
-            td = button_to 'Add issue', new_project_problem_path(project.id), :method => :get
-            td = button_to 'Add WBS', new_project_wb_path(project.id), :method => :get
-            td = button_to 'Show WBS list', project_wbs_path(project.id), :method => :get
-            
-
-        br
-        = link_to 'Nouveau projet', new_project_path 
-=======
 
   .Project
 
@@ -81,7 +48,6 @@
 
               
           
->>>>>>> 0e5f279cfde961a6f95802a004ffbde17db32fd1
 
 
 
