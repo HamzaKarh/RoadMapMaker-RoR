@@ -16,6 +16,10 @@ jQuery(document).ready( () => {
     
     var field = document.getElementById("wbsDrawingField")
     var action_id = 0
+
+    
+    
+    
     
     function renderLink(){
         
@@ -75,7 +79,6 @@ jQuery(document).ready( () => {
                 }
                 charCounter ++
             }
-            var field = document.getElementById("wbsDrawingField")
             //refreshing link xy and length
             var x1 = document.getElementById(action1).getAttribute("data-x");
             var y1 = document.getElementById(action1).getAttribute("data-y");
@@ -179,7 +182,21 @@ jQuery(document).ready( () => {
 
     }
     
+    interact('#trashBox').dropzone({
+        accept: '.dropped',
+        overlap: 0.75,
 
+        ondrop: function (event){
+            var target = event.relatedTarget
+            var links = getActionLinks(target.id)
+            console.log(target)
+            field.removeChild(target)
+            for (i = 0 ; i<links.length; i++){
+                console.log(links[i])
+                field.removeChild(links[i])
+            }
+        }
+    })
 
     interact('#wbsDrawingField').dropzone({
         // only accept elements matching this CSS selector
