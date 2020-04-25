@@ -10,15 +10,35 @@
 //= require_tree . 
 
 
-// <svg width="500" height="500"><line x1="50" y1="50" x2="350" y2="350" stroke="black"/></svg>
 
 jQuery(document).ready( () => {
     
     var field = document.getElementById("wbsDrawingField")
     var action_id = 0
 
+//
+    function getCanvas() {
+       // field.width(a4[0] * 1.33333 - 80).css('max-width', 'none');
+        return html2canvas(field, {
+          imageTimeout: 2000,
+          removeContainer: true,
+        });
+    }
+//
+    function createPDF() {
+        getCanvas().then(function(canvas) {
+        var img = canvas.toDataURL('image/png'),
+            doc = new jsPDF({
+            unit: 'px',
+            format: 'a4',
+            });
+        doc.addImage(img, 'JPEG', 20, 20);
+        doc.save('test.pdf');
+       // field.width(cache_width);
+        });
+    }
     
-    
+    $('#savePdf').click(createPDF);
     
     
     function renderLink(){
@@ -184,7 +204,7 @@ jQuery(document).ready( () => {
     
     interact('#trashBox').dropzone({
         accept: '.dropped',
-        overlap: 0.75,
+        overlap: 0.05,
 
         ondrop: function (event){
             var target = event.relatedTarget
@@ -202,7 +222,7 @@ jQuery(document).ready( () => {
         // only accept elements matching this CSS selector
         accept: '.draggable',
         // Require a 75% element overlap for a drop to be possible
-        overlap: 0.75,
+        overlap: 0.15,
         
         // listen for drop related events:
         
