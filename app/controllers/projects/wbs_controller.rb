@@ -29,7 +29,7 @@ class Projects::WbsController < ApplicationController
     @wb = @project.wbs.build(wb_params)
     respond_to do |format|
       if @wb.save
-        format.html { redirect_to project_wb_path(@project, @wb), notice: 'Wb was successfully created.' }
+        format.html { redirect_to project_wbs_path(@project), notice: 'Wb was successfully created.' }
         format.json { render :show, status: :created, location: @wb }
       else
         format.html { render :new }
