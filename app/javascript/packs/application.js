@@ -15,26 +15,29 @@ jQuery(document).ready( () => {
     
     var field = document.getElementById("wbsDrawingField")
     var action_id = 0
+    var pdfField = $(".pdfField"), a4 = [595.28, 841.89], cache_width = pdfField.width()
 
-//
+//tentative de mise en page avant telechargement
     function getCanvas() {
-       // field.width(a4[0] * 1.33333 - 80).css('max-width', 'none');
-        return html2canvas(field, {
-          imageTimeout: 2000,
-          removeContainer: true,
+        pdfField.width((a4[0] * 1.33333) - 80).css('max-width', 'none')
+        rescaleActionPositions()
+        return html2canvas(pdfField, {
+            imageTimeout: 2000,
+            removeContainer: true,
         });
     }
 //
     function createPDF() {
         getCanvas().then(function(canvas) {
-        var img = canvas.toDataURL('image/png'),
-            doc = new jsPDF({
-            unit: 'px',
-            format: 'a4',
-            });
-        doc.addImage(img, 'JPEG', 40, 40);
-        doc.save('test.pdf');
-       // field.width(cache_width);
+            refreshAllLinksXY()
+            var img = canvas.toDataURL('image/png'),
+                doc = new jsPDF({
+                unit: 'px',
+                format: 'a4',
+                });
+            doc.addImage(img, 'JPEG', 40, 40);
+            doc.save('WBS.pdf');
+            pdfField.width(cache_width);
         });
     }
     
@@ -75,6 +78,21 @@ jQuery(document).ready( () => {
         
     }
     
+    function rescaleActionPositions(){
+        var actions = $(".dropped")
+        for (i = 0; i< actions.length; i++){
+            var action = actions[i]
+            var x = Number(action.getAttribute('data-x')) * a4[0]/pdfField.width()
+            var y = action.getAttribute('data-y')
+            action.style.webkitTransform =
+                action.style.transform = 
+                    'translate(' + x + 'px, ' + y + 'px)'
+            action.setAttribute('data-x', x)
+            action.setAttribute('data-y', y)
+            var action_links = getActionLinks(action.id)
+            refreshActionLinks(action_links)
+        }
+    }
 
  
 
