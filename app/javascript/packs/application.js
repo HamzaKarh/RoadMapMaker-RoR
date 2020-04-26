@@ -32,7 +32,7 @@ jQuery(document).ready( () => {
             unit: 'px',
             format: 'a4',
             });
-        doc.addImage(img, 'JPEG', 20, 20);
+        doc.addImage(img, 'JPEG', 40, 40);
         doc.save('test.pdf');
        // field.width(cache_width);
         });
@@ -202,7 +202,7 @@ jQuery(document).ready( () => {
 
     }
     
-    interact('#trashBox').dropzone({
+    interact('#poubelle').dropzone({
         accept: '.dropped',
         overlap: 0.05,
 
