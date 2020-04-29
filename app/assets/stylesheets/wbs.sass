@@ -4,13 +4,13 @@
 
 .drawingTool
     width: 100%
-    height: 100%
+    height: auto
     #select_tag
         width: 60%
         font-size: 1rem
         background-color: #414141
         padding: 1%
-        Border: none
+        border: none
         color: white
         overflow: scroll
         
@@ -19,7 +19,7 @@
         width: 50%
         
     .actionGeneration_Box
-        padding: 2%
+        padding: 5px
         border: 4px solid #000000
         border-radius: 10px
         width: 100%
@@ -36,8 +36,10 @@
             column-count: 2
             
         .BoiteGauche
-            height: 100%
+            margin: 0 auto
+            height: 95%
             display: flex
+            margin: 0
             
 
             .Spawn 
@@ -51,10 +53,11 @@
                     border-radius: 10px
                     background-color: #ffffff
                     border: 1px solid #bababa
-                    height: 70px
+                    height: 60px
                     width: 30%
         
         .BoiteDroite
+            margin: 0 auto
             height: 100%
 
             
@@ -67,7 +70,7 @@
 
         border: 4px solid #000000
         border-radius: 10px
-        height: 75%
+        height: 80%
         max-width: 100%
         flex-grow: 4
         overflow-y: scroll
@@ -84,7 +87,7 @@
             #poubelle
                 width: 5%
                 z-index: 99
-                background-image: url('deletenoir.png')
+                background-image: url('deleteblack.png')
                 background-size: cover
                 height: 40px
                 width: 40px
@@ -116,7 +119,7 @@
     border-width: 3px
     border-color: #15b32f
     padding: 10px 10px 10px 10px
-    height: 50px
+    min-height: 50px
     width: auto
     color: white
     z-index: +2

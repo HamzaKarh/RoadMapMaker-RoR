@@ -209,7 +209,6 @@ jQuery(document).ready( () => {
         ondrop: function (event){
             var target = event.relatedTarget
             var links = getActionLinks(target.id)
-            console.log(target)
             field.removeChild(target)
             for (i = 0 ; i<links.length; i++){
                 console.log(links[i])
