@@ -60,9 +60,13 @@
                   tr
                     td.gauche1 onclick = "Popup()" = problem.name
                     td.droite 
-                      = link_to image_tag("plusnoir.png", size: "25x25"), new_project_problem_counteraction_path(@project, problem), :method => :get
-                      = link_to image_tag("editnoir.png", size: "25x25"), edit_project_problem_path(@project,  problem), :method => :get
-                      = link_to image_tag("deletenoir.png", size: "25x25"), [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+                      = button_to new_project_problem_counteraction_path(@project, problem), :method => :get
+                        = image_tag("plusnoir.png", size: "25x25")
+                      = button_to edit_project_problem_path(@project,  problem), :method => :get
+                        = image_tag("editnoir.png", size: "25x25")
+                      = button_to [@project, problem], :method => :delete , data: { confirm: 'Are you sure?' }
+                        = image_tag("deletenoir.png", size: "25x25")
+
       .action-box
         titre
           h1 Actions
@@ -76,8 +80,10 @@
                     tr
                       td.gauche = counteraction.name
                       td.droite 
-                        = link_to image_tag("editnoir.png", size: "25x25"), edit_project_problem_path(@project,  problem), :method => :get
-                        = link_to image_tag("deletenoir.png", size: "25x25"), [@project,problem] , data: { confirm: 'Are you sure?' }, method: :delete
+                        = button_to edit_project_problem_path(@project,  problem), :method => :get
+                         = image_tag("editnoir.png", size: "25x25")
+                        = button_to [@project,problem] , data: { confirm: 'Are you sure?' }, :method => :delete
+                         = image_tag("deletenoir.png", size: "25x25")
 
 
 

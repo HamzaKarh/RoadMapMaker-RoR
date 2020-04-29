@@ -16,7 +16,7 @@ table
         td = problem.description
         td = button_to 'Afficher projet', [@project] 
         td = button_to 'Modifier', edit_project_problem_path(@project,  problem)
-        td = button_to 'Supprimer', [@project,problem] , data: { confirm: 'Êtes-vous sûr?' }, method: :delete
+        td = button_to 'Supprimer', [@project,problem] , data: { confirm: 'Êtes-vous sûr?' }, method: => :delete
 
 
 br
