@@ -135,6 +135,7 @@ jQuery(document).ready( () => {
     
     
     function dragMoveListener (event) {
+        
         var refreshingRate = 10
         var target = event.target
         // keep the dragged position in the data-x/data-y attributes
@@ -159,6 +160,7 @@ jQuery(document).ready( () => {
             var links = getActionLinks(target.id)
             refreshActionLinks(links)
         }
+
     }
 
     $('#generate_button').on('click', function(e) {
@@ -185,7 +187,8 @@ jQuery(document).ready( () => {
         inertia: true,
         listeners: {
             // call this function on every dragmove event
-            move: dragMoveListener
+            move:  dragMoveListener
+   
         },
         autoScroll: true
         
@@ -239,6 +242,7 @@ jQuery(document).ready( () => {
           // remove the drop feedback style
         },
         ondrop: function (event) {
+            $(document).off('touchstart')
             var draggableElement = event.relatedTarget, dropzoneElement = event.target
             var id = draggableElement.id
             var txt = draggableElement.innerHTML
@@ -278,11 +282,13 @@ jQuery(document).ready( () => {
                         listeners: {
                             // call this function on every dragmove event
                             move: dragMoveListener
+                            
                         },
                         autoScroll: true,
                         
             })
             
+           
             
             
             $('.dropped').on('click', function(e) {
